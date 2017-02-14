@@ -1,7 +1,7 @@
 # ServerManagementTools
 ## about_ServerManagementTools
 
-```
+``` PowerShell
 ABOUT TOPIC NOTE:
 The first header of the about topic should be the topic name.
 The second header contains the lookup name used by the help system.
