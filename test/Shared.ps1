@@ -3,5 +3,6 @@
 if (!$SuppressImportModule) {
     # -Scope Global is needed when running tests from inside of psake, otherwise
     # the module's functions cannot be found in the ServerManagementTools\ namespace
+    Get-Module -Name $ModuleName | Remove-Module -Force
     Import-Module "$($SrcRootDir)\$($ModuleName).psd1" -Scope Global
 }
