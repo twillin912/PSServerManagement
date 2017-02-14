@@ -1,18 +1,20 @@
-function Get-DfsrBacklog {
+function Get-DfsrBacklogStatus {
     <#
     .SYNOPSIS
-        The Get-DfsrBacklog get the DFSR inbound replication backlog.
+        Retrieves the count of pending file updates between two DFS Replication partners.
     .DESCRIPTION
-        This cmdlet queries the specified computer and its replication parteners for DFS replication senarios and their current inbound replication backlog.  The connection are made using CIM and WMI.
+        The Get-DfsrBacklogStatus cmdlet retrieves a count of pending updates between two computers that participate in Distributed File System (DFS) Replication.
+
+        Updates can be new, modified, or deleted files and folders.  Any files or folders listed in the DFS Replication backlog have not yet replicated from the source computer to the destination computer. This is not necessarily an indication of problems. A backlog indicates latency, and a backlog may be expected in your environment, depending on configuration, rate of change, network, and other factors.
     .PARAMETER ComputerName
-        The name of the computer to query for DFS replication senarios.  This defaults to the local machine if no value is given.
+        Specifies the name of the sending computer. A source computer is also called an outbound or upstream computer.
     .PARAMETER FolderName
-        The name of the replicated folder.  If no value is provided, then all folders are returned.
+        Specifies an array of names of replicated folders. If you do not specify this parameter, the cmdlet queries for all participating replicated folders. You can specify multiple folders, separated by commas.
     .EXAMPLE
-        Get-DfsrBacklog -ComputerName 'MyServer'
+        Get-DfsrBacklogStatus -ComputerName 'MyServer'
         Retrieves all configured replicated folders and their inbound backlog from each partner.
     .EXAMPLE
-        Get-DfsrBacklog -ComputerName 'MyServer' -FolderName 'Folder01'
+        Get-DfsrBacklogStatus -ComputerName 'MyServer' -FolderName 'Folder01'
         Retrieves the replicated folder 'Folder01' and its inbound backlog from each partner.
     .LINK
         https://github.com/twillin912/ServerManagementTools
@@ -95,7 +97,7 @@ function Get-DfsrBacklog {
                         $OutputValues.Add('PartnerName',$Partner.PartnerName)
                         $OutputValues.Add('Backlog',$Backlog.BacklogFileCount)
                         $OutputObject = New-Object -TypeName PSObject -Property $OutputValues
-                        $OutputObject.PSObject.TypeNames.Insert(0,'ServerManagementTools.DFS.Backlog')
+                        $OutputObject.PSObject.TypeNames.Insert(0,'ServerManagementTools.DFS.BacklogStatus')
                         $Output += $OutputObject
                     }
                 } #foreach Partner

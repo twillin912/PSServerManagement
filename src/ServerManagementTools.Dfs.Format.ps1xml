@@ -2,9 +2,9 @@
 <Configuration>
     <ViewDefinitions>
         <View>
-            <Name>DfsrBacklog</Name>
+            <Name>DfsrBacklogStatus</Name>
             <ViewSelectedBy>
-                <TypeName>ServerManagementTools.DFS.Backlog</TypeName>
+                <TypeName>ServerManagementTools.DFS.BacklogStatus</TypeName>
             </ViewSelectedBy>
             <TableControl>
                 <TableHeaders>

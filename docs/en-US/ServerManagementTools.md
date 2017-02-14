@@ -11,6 +11,6 @@ Locale: en-US
 {{Manually Enter Description Here}}
 
 ## ServerManagementTools Cmdlets
-### [Get-DfsrBacklog](Get-DfsrBacklog.md)
-{{Manually Enter Get-DfsrBacklog Description Here}}
+### [Get-DfsrBacklogStatus](Get-DfsrBacklogStatus.md)
+{{Manually Enter Get-DfsrBacklogStatus Description Here}}
 
