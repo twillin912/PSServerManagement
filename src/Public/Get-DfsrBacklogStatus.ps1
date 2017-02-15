@@ -50,7 +50,7 @@ function Get-DfsrBacklogStatus {
                 $DfsrFolderInfo = Get-CimInstance -ComputerName $Computer -Namespace 'root\MicrosoftDFS' -ClassName 'DfsrReplicatedFolderInfo' -ErrorAction Stop
             }
             catch {
-                Write-Warning -Message 'Cannot bind to CIM instance on $Computer, failing back to WMI.'
+                Write-Warning -Message "Cannot bind to CIM instance on $Computer, failing back to WMI."
                 $WmiFailback = $true
                 $DfsrConnInfo = Get-WmiObject -ComputerName $Computer -Namespace 'root\MicrosoftDFS' -Class 'DfsrConnectionInfo'
                 $DfsrFolderInfo = Get-WmiObject -ComputerName $Computer -Namespace 'root\MicrosoftDFS' -Class 'DfsrReplicatedFolderInfo'
@@ -81,16 +81,15 @@ function Get-DfsrBacklogStatus {
                 $InboundPartner = $DfsrConnInfo | Where-Object { $PSItem.ReplicationGroupGUID -eq $Folder.ReplicationGroupGUID -and $PSItem.Inbound -eq $true }
                 foreach ( $Partner in $InboundPartner ) {
                     try {
-                        $ParterFolderInfo = Get-CimInstance -ComputerName $Partner.PartnerName -Namespace 'root\MicrosoftDFS' -ClassName 'DfsrReplicatedFolderInfo' -ErrorAction SilentlyContinue
+                        $ParterFolderInfo = Get-CimInstance -ComputerName $Partner.PartnerName -Namespace 'root\MicrosoftDFS' -ClassName 'DfsrReplicatedFolderInfo' -ErrorAction Stop
                         $PartnerFolder = $ParterFolderInfo | Where-Object { $PSItem.ReplicatedFolderGuid -eq $Folder.ReplicatedFolderGuid }
                         $Backlog = Invoke-CimMethod -InputObject $PartnerFolder -MethodName 'GetOutboundBacklogFileCount' -Arguments @{ VersionVector = $VersionVector }
-
                     }
                     catch {
-                        Write-Verbose -Message 'Cannot bind to CIM instance on $($Partner.PartnerName), failing back to WMI.'
+                        Write-Warning -Message "Cannot bind to CIM instance on $($Partner.PartnerName), failing back to WMI."
                         $ParterFolderInfo = Get-WmiObject -ComputerName $Partner.PartnerName -Namespace 'root\MicrosoftDFS' -Class 'DfsrReplicatedFolderInfo'
                         $PartnerFolder = $ParterFolderInfo | Where-Object { $PSItem.ReplicatedFolderGuid -eq $Folder.ReplicatedFolderGuid }
-                        $Backlog = $PartnerFolder.GetOutboundBacklogFileCount($VersionVector)
+                        $Backlog = Invoke-WmiMethod -InputObject $PartnerFolder -Name 'GetOutboundBacklogFileCount' -ArgumentList $VersionVector
                     }
                     finally {
                         $OutputValues = $FolderValues.Clone()
