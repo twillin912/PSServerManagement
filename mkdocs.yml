@@ -1,0 +1,7 @@
+site_name: ServerManagementTools Documentation
+repo_url: https://github.com/twillin912/ServerManagementTools
+theme: readthedocs
+pages:
+  - Home: index.md
+  - Functions:
+    - Get-DfsrBacklogStatus: en-US/Get-DfsrBacklogStatus.md

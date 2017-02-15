@@ -1,16 +1,15 @@
 ---
 Module Name: ServerManagementTools
 Module Guid: 11ec2a41-1320-43cb-8572-e59efcb2191b
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Download Help Link: https://github.com/twillin912/ServerManagementTools/tree/master/docs
+Help Version: 1.0.0.0
 Locale: en-US
 ---
 
 # ServerManagementTools Module
 ## Description
-{{Manually Enter Description Here}}
+Collection of PowerShell functions for managing Windows Server
 
 ## ServerManagementTools Cmdlets
 ### [Get-DfsrBacklogStatus](Get-DfsrBacklogStatus.md)
-{{Manually Enter Get-DfsrBacklogStatus Description Here}}
-
+Retrieves the count of pending file updates between two DFS Replication partners.

@@ -98,7 +98,7 @@ PrivateData = @{
         Tags = @('DFS','Replication')
 
         # A URL to the license for this module.
-        LicenseUri = 'https://github.com/twillin912/ServerManagementTools/blob/develop/LICENSE.txt'
+        LicenseUri = 'https://github.com/twillin912/ServerManagementTools/blob/master/LICENSE.txt'
 
         # A URL to the main website for this project.
         ProjectUri = 'https://github.com/twillin912/ServerManagementTools'
@@ -107,7 +107,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'https://github.com/twillin912/ServerManagementTools/blob/develop/ReleaseNotes.md'
+        ReleaseNotes = 'https://github.com/twillin912/ServerManagementTools/blob/master/ReleaseNotes.md'
 
     } # End of PSData hashtable
 
