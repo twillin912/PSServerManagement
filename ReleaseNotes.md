@@ -4,6 +4,7 @@
 
 ---
 
-- `Get-DfsrBacklogStatus` - Query DFSR replication backlog
-  - This cmdlet queries the specified computer and its replication parteners for DFS replication senarios and their current inbound replication backlog.  The connection are made using CIM and WMI.
+- New Functions
+  - `Invoke-LogRotation` - Compresses log files by month
+  - The Invoke-LogRotation cmdlet retrieves a list of log file in the specified locations and compressed them into a ZIP archive by month.  Once the contents of the archive are verified the original log files are deleted.
 

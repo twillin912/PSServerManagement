@@ -7,12 +7,17 @@ Locale: en-US
 ---
 
 # ServerManagementTools Module
+
 ## Description
+
 Collection of PowerShell functions for managing Windows Server
 
 ## ServerManagementTools Cmdlets
+
 ### [Get-DfsrBacklogStatus](Get-DfsrBacklogStatus.md)
+
 Retrieves the count of pending file updates between two DFS Replication partners.
 
 ### [Invoke-LogRotation](Invoke-LogRotation.md)
+
 Compresses log files by month.

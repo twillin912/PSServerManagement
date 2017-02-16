@@ -14,3 +14,5 @@ Collection of PowerShell functions for managing Windows Server.
 - Management
 - DFSR
 - Backlog
+- Logging
+- LogRotate
