@@ -3,6 +3,7 @@
 ## Functions
 
 - [Get-DfsrBacklogStatus](en-US/Get-DfsrBacklogStatus.md)
+- [Invoke-LogRotation](en-US/Invoke-LogRotation.md)
 
 ## Code
 
