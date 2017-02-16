@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-IISLogPath
 
 ## SYNOPSIS
-Get the configured IIS log file path for one or more websites
+Retrieve webiste logging path.
 
 ## SYNTAX
 
@@ -16,7 +16,7 @@ Get-IISLogPath [[-Name] <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Reads the IIS website configuration data to determine the log file path for the given website
+The Get-IISLogPath cmdlet retrieves the log file path for one or more websites configured on the target computer.
 
 ## EXAMPLES
 
@@ -25,19 +25,35 @@ Reads the IIS website configuration data to determine the log file path for the 
 Get-IISLogPath
 ```
 
-Get log file path for all configured websites
+Returns log path information for all sites
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
 Get-IISLogPath -Name 'Default Web Site'
 ```
 
-Get log file path for the website named 'Default Web Site'
+Returns log path information for the 'Default Web Site'
+
+### -------------------------- EXAMPLE 3 --------------------------
+```
+Get-IISLogPath -Name 'Admin*'
+```
+
+Returns log path information for all sites whose Name begin with 'Admin'
+
+### -------------------------- EXAMPLE 4 --------------------------
+```
+Get-IISLogPath -Name @('MySite1','MySite2')
+```
+
+Returns log path information for the sites 'MySite1' and 'MySite2'
 
 ## PARAMETERS
 
 ### -Name
-Optional parameter the specifies the name of the website
+Specifies a name of one or more websites. 
+Get-IISLogPath retrieves the logging path for the website specified. 
+If you do not specify this parameter, the cmdlet will return all configured sites.
 
 ```yaml
 Type: String[]
@@ -47,7 +63,7 @@ Aliases:
 Required: False
 Position: 1
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

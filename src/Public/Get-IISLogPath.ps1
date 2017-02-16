@@ -1,17 +1,23 @@
 function Get-IISLogPath {
     <#
     .SYNOPSIS
-        Get the configured IIS log file path for one or more websites
+        Retrieve webiste logging path.
     .DESCRIPTION
-        Reads the IIS website configuration data to determine the log file path for the given website
+        The Get-IISLogPath cmdlet retrieves the log file path for one or more websites configured on the target computer.
     .PARAMETER Name
-        Optional parameter the specifies the name of the website
+        Specifies a name of one or more websites.  Get-IISLogPath retrieves the logging path for the website specified.  If you do not specify this parameter, the cmdlet will return all configured sites.
     .EXAMPLE
         Get-IISLogPath
-        Get log file path for all configured websites
+        Returns log path information for all sites
     .EXAMPLE
         Get-IISLogPath -Name 'Default Web Site'
-        Get log file path for the website named 'Default Web Site'
+        Returns log path information for the 'Default Web Site'
+    .EXAMPLE
+        Get-IISLogPath -Name 'Admin*'
+        Returns log path information for all sites whose Name begin with 'Admin'
+    .EXAMPLE
+        Get-IISLogPath -Name @('MySite1','MySite2')
+        Returns log path information for the sites 'MySite1' and 'MySite2'
     .LINK
         https://github.com/twillin912/ServerManagementTools
     .NOTES
@@ -22,30 +28,31 @@ function Get-IISLogPath {
     [CmdletBinding()]
     [OutputType([PSObject])]
     Param (
-        [Parameter()]
+        [Parameter(ValueFromPipeline=$true)]
         [string[]] $Name
     )
 
     Begin {
-        $WebsiteObjects = @()
+        $WebsiteObjects = Get-Website
+        $FilteredSites = @()
     }
 
     Process {
-        if ( $PSBoundParameters.ContainsKey('Name') ) {
+        if ( $Name ) {
             foreach ( $SiteName in $Name ) {
-                $WebsiteObjects += Get-Website -Name $SiteName
+                $FilteredSites += $WebsiteObjects | Where-Object { $PSItem.Name -like $Sitename }
             }
         } else {
-            $WebsiteObjects = Get-Website
+            $FilteredSites = $WebsiteObjects
         }
 
-        foreach ( $Website in $WebsiteObjects ) {
-            $LogPath = "$($Website.logFile.directory)\W3SVC$($Website.id)"
+        foreach ( $Site in $FilteredSites ) {
+            $LogPath = "$($Site.logFile.directory)\W3SVC$($Site.id)"
             $LogPath = [System.Environment]::ExpandEnvironmentVariables($LogPath)
 
-            $Object = New-Object -TypeName PSObject -Property @{
-                Id          = $Website.id
-                Name        = $Website.name
+            $Object = New-Object -TypeName PSCustomObject -Property @{
+                Id          = $Site.id
+                Name        = $Site.name
                 LogPath     = $LogPath
             }
             $Object.PSObject.TypeNames.Insert(0, 'ServerManagementTools.IISLogPath')
