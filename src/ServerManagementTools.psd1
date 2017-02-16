@@ -12,7 +12,7 @@
 RootModule = 'ServerManagementTools.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.2.0'
+ModuleVersion = '0.3.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -42,7 +42,7 @@ PowerShellVersion = '3.0'
 # PowerShellHostVersion = ''
 
 # Minimum version of Microsoft .NET Framework required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
-DotNetFrameworkVersion = '4.5'
+DotNetFrameworkVersion = '4.0'
 
 # Minimum version of the common language runtime (CLR) required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
 # CLRVersion = ''
@@ -63,15 +63,13 @@ DotNetFrameworkVersion = '4.5'
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = @('ServerManagementTools.Dfs.Format.ps1xml')
-FormatsToProcess = @('ServerManagementTools.Format.ps1xml')
+FormatsToProcess = @('ServerManagementTools.Dfs.Format.ps1xml','ServerManagementTools.Format.ps1xml')
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @('Get-DfsrBacklogStatus','Invoke-LogRotation')
-FunctionsToExport = @('Compress-IISLogFile','Get-IISLogPath')
+FunctionsToExport = @('Get-DfsrBacklogStatus','Get-IISLogPath','Invoke-LogRotation')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
