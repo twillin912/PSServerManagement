@@ -18,6 +18,10 @@ Collection of PowerShell functions for managing Windows Server
 
 Retrieves the count of pending file updates between two DFS Replication partners.
 
+### [Get-IISLogPath](Get-IISLogPath.md)
+
+Get the configured IIS log file path for one or more websites
+
 ### [Invoke-LogRotation](Invoke-LogRotation.md)
 
 Compresses log files by month.

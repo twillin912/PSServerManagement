@@ -12,7 +12,7 @@
 RootModule = 'ServerManagementTools.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.2.0'
+ModuleVersion = '0.3.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -33,7 +33,7 @@ Copyright = '(c) 2017 Trent Willingham. All rights reserved.'
 Description = 'Collection of PowerShell functions for managing Windows Server.'
 
 # Minimum version of the Windows PowerShell engine required by this module
-# PowerShellVersion = ''
+PowerShellVersion = '3.0'
 
 # Name of the Windows PowerShell host required by this module
 # PowerShellHostName = ''
@@ -42,7 +42,7 @@ Description = 'Collection of PowerShell functions for managing Windows Server.'
 # PowerShellHostVersion = ''
 
 # Minimum version of Microsoft .NET Framework required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
-# DotNetFrameworkVersion = ''
+DotNetFrameworkVersion = '4.0'
 
 # Minimum version of the common language runtime (CLR) required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
 # CLRVersion = ''
@@ -63,13 +63,13 @@ Description = 'Collection of PowerShell functions for managing Windows Server.'
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = @('ServerManagementTools.Dfs.Format.ps1xml')
+FormatsToProcess = @('ServerManagementTools.Dfs.Format.ps1xml','ServerManagementTools.Format.ps1xml')
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @('Get-DfsrBacklogStatus','Invoke-LogRotation')
+FunctionsToExport = @('Get-DfsrBacklogStatus','Get-IISLogPath','Invoke-LogRotation')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()

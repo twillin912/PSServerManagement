@@ -104,7 +104,7 @@ Task Clean -depends Init -requiredVariables OutDir {
     else {
         Write-Verbose "$($psake.context.currentTaskName) - `$OutDir '$OutDir' must be longer than 3 characters."
     }
-    
+
     if ($ScratchRootDir.Length -gt 3) {
         Get-ChildItem $ScratchRootDir | Remove-Item -Recurse -Force -Verbose:$VerbosePreference
     }
@@ -267,15 +267,15 @@ Task GenerateMarkdown -requiredVariables DefaultLocale, DocsRootDir, ModuleName,
             New-Item $DocsRootDir -ItemType Directory | Out-Null
         }
 
+        # ErrorAction set to SilentlyContinue so this command will not overwrite an existing MD file.
+        New-MarkdownHelp -Module $ModuleName -Locale $DefaultLocale -OutputFolder $DocsRootDir\$DefaultLocale `
+                         -WithModulePage -ErrorAction SilentlyContinue -Verbose:$VerbosePreference | Out-Null
+
         if (Get-ChildItem -LiteralPath $DocsRootDir -Filter *.md -Recurse) {
             Get-ChildItem -LiteralPath $DocsRootDir -Directory | ForEach-Object {
                 Update-MarkdownHelp -Path $_.FullName -Verbose:$VerbosePreference | Out-Null
             }
         }
-
-        # ErrorAction set to SilentlyContinue so this command will not overwrite an existing MD file.
-        New-MarkdownHelp -Module $ModuleName -Locale $DefaultLocale -OutputFolder $DocsRootDir\$DefaultLocale `
-                         -WithModulePage -Force -ErrorAction SilentlyContinue -Verbose:$VerbosePreference | Out-Null
     }
     finally {
         Remove-Module $ModuleName
@@ -458,13 +458,13 @@ Task Publish -depends Build, Test, BuildHelp, GenerateFileCatalog, BeforePublish
 Task CorePublish -requiredVariables SettingsPath, ModuleOutDir {
     # Publish to gallery with a few restrictions
     if ( $env:APPVEYOR -and $env:APPVEYOR_REPO_TAG -and $env:APPVEYOR_REPO_BRANCH -eq 'master' ) {
-        
+
     }
 
     # Publish to AppVeyor if we're in AppVeyor
     if ( $env:APPVEYOR ) {
         Add-Type -AssemblyName System.IO.Compression.FileSystem
-        $ZipFile = "$ScratchRootDir\$ModuleName-$env:APPVEYOR_BUILD_VERSION.zip" 
+        $ZipFile = "$ScratchRootDir\$ModuleName-$env:APPVEYOR_BUILD_VERSION.zip"
         [System.IO.Compression.ZipFile]::CreateFromDirectory("$OutDir", $ZipFile)
         Push-AppveyorArtifact $ZipFile
     }
