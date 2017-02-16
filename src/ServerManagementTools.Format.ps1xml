@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+      <Name>IISLogPathTable</Name>
+      <ViewSelectedBy>
+        <TypeName>ServerManagementTools.IISLogPath</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Width>5</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Width>20</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Width>30</Width>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Id</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LogPath</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>
