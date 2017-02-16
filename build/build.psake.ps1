@@ -104,7 +104,7 @@ Task Clean -depends Init -requiredVariables OutDir {
     else {
         Write-Verbose "$($psake.context.currentTaskName) - `$OutDir '$OutDir' must be longer than 3 characters."
     }
-    
+
     if ($ScratchRootDir.Length -gt 3) {
         Get-ChildItem $ScratchRootDir | Remove-Item -Recurse -Force -Verbose:$VerbosePreference
     }
@@ -458,13 +458,13 @@ Task Publish -depends Build, Test, BuildHelp, GenerateFileCatalog, BeforePublish
 Task CorePublish -requiredVariables SettingsPath, ModuleOutDir {
     # Publish to gallery with a few restrictions
     if ( $env:APPVEYOR -and $env:APPVEYOR_REPO_TAG -and $env:APPVEYOR_REPO_BRANCH -eq 'master' ) {
-        
+
     }
 
     # Publish to AppVeyor if we're in AppVeyor
     if ( $env:APPVEYOR ) {
         Add-Type -AssemblyName System.IO.Compression.FileSystem
-        $ZipFile = "$ScratchRootDir\$ModuleName-$env:APPVEYOR_BUILD_VERSION.zip" 
+        $ZipFile = "$ScratchRootDir\$ModuleName-$env:APPVEYOR_BUILD_VERSION.zip"
         [System.IO.Compression.ZipFile]::CreateFromDirectory("$OutDir", $ZipFile)
         Push-AppveyorArtifact $ZipFile
     }

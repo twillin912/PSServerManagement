@@ -12,7 +12,7 @@ Get the configured IIS log file path for one or more websites
 ## SYNTAX
 
 ```
-Get-IISLogPath [[-Name] <String[]>]
+Get-IISLogPath [[-Name] <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,6 +50,9 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
