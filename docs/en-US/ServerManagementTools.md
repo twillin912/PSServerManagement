@@ -15,4 +15,4 @@ Collection of PowerShell functions for managing Windows Server
 Retrieves the count of pending file updates between two DFS Replication partners.
 
 ### [Invoke-LogRotation](Invoke-LogRotation.md)
-{{Manually Enter Invoke-LogRotation Description Here}}
+Compresses log files by month.
