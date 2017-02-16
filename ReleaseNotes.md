@@ -1,4 +1,4 @@
-# What is new in ServerManagementTools 0.1.0
+# What is new in ServerManagementTools 0.2.0
 
 ## New Features
 
