@@ -113,7 +113,7 @@ Properties {
     # acts as a direct input to the Pester -CodeCoverage parameter, so will support constructions
     # like the ones found here: https://github.com/pester/Pester/wiki/Code-Coverage.
     [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
-    $CodeCoverageFiles = Get-ChildItem -Path "$SrcRootDir" -Include *.ps1, *.psm1 -File -Recurse
+    $CodeCoverageFiles = Get-ChildItem -Path "$SrcRootDir" -Include *.ps1 -File -Recurse
 
     # -------------------- Publishing properties ------------------------------
 
