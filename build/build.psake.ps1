@@ -267,15 +267,15 @@ Task GenerateMarkdown -requiredVariables DefaultLocale, DocsRootDir, ModuleName,
             New-Item $DocsRootDir -ItemType Directory | Out-Null
         }
 
+        # ErrorAction set to SilentlyContinue so this command will not overwrite an existing MD file.
+        New-MarkdownHelp -Module $ModuleName -Locale $DefaultLocale -OutputFolder $DocsRootDir\$DefaultLocale `
+                         -WithModulePage -ErrorAction SilentlyContinue -Verbose:$VerbosePreference | Out-Null
+
         if (Get-ChildItem -LiteralPath $DocsRootDir -Filter *.md -Recurse) {
             Get-ChildItem -LiteralPath $DocsRootDir -Directory | ForEach-Object {
                 Update-MarkdownHelp -Path $_.FullName -Verbose:$VerbosePreference | Out-Null
             }
         }
-
-        # ErrorAction set to SilentlyContinue so this command will not overwrite an existing MD file.
-        New-MarkdownHelp -Module $ModuleName -Locale $DefaultLocale -OutputFolder $DocsRootDir\$DefaultLocale `
-                         -WithModulePage -Force -ErrorAction SilentlyContinue -Verbose:$VerbosePreference | Out-Null
     }
     finally {
         Remove-Module $ModuleName
