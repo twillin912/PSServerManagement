@@ -7,6 +7,5 @@
 # Folder config file
 Desktop.ini
 
-# Release and Temp output dir.
-[Rr]elease/
-[Tt]emp/
+# Artifacts temp dir.
+[Aa]rtifacts/

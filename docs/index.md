@@ -9,5 +9,3 @@
 ## Code
 
 The ServerManagementTools project code is on GitHub.
-
-
