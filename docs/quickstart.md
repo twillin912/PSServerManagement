@@ -8,10 +8,6 @@ If you have PowerShell 5+, or have the PowerShellGet module, simply use the `Ins
 PS> Install-Module -Name ServerManagementTools
 ```
 
-Install directly from GitHub
-
-
-
 ## Getting Started
 
 Get a list of available commands

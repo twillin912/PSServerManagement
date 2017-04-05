@@ -20,6 +20,9 @@ $DocsPath = Join-Path -Path $ProjectRoot -ChildPath 'docs'
 $TestPath = Join-Path -Path $ProjectRoot -ChildPath 'tests'
 
 [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
+$PesterResultsFile = Join-Path -Path $ArtifactPath -ChildPath 'PesterResults.xml'
+
+[System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
 $UseAppVeyor = $false
 
 $Version = (Test-ModuleManifest -Path "$env:BHPSModuleManifest").Version

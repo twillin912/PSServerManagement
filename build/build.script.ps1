@@ -6,15 +6,10 @@
 . $env:BHProjectPath\Build\build.settings.ps1 -ProjectRoot $env:BHProjectPath
 . $env:BHProjectPath\module.settings.ps1
 
-# Include: build.helpers.ps1
-. $env:BHProjectPath\Build\build.helpers.ps1
-
-
 Set-StrictMode -Version Latest
 
-
 # SYNOPSIS: Default build task
-Add-BuildTask . Init, Clean, Build, BuildHelp, Analyze, Test, Archive, Publish
+Add-BuildTask . Init, Clean, Build, BuildHelp, Analyze, Test
 
 Add-BuildTask Init {
     $env:BHBuildNumber = $ModuleVersion.Revision
@@ -157,7 +152,7 @@ Add-BuildTask RunTest {
         Microsoft.PowerShell.Management\Push-Location -LiteralPath $TestPath
 
         $PesterParams = @{
-            OutputFile = (Join-Path $ArtifactPath 'TestResults.xml')
+            OutputFile = $PesterResultsFile
             OutputFormat = 'NUnitXml'
             Strict = $true
             PassThru = $true
@@ -169,8 +164,12 @@ Add-BuildTask RunTest {
         $PesterResults | ConvertTo-Json -Depth 5 | Set-Content (Join-Path $ArtifactPath 'PesterResults.json')
 
         if ($env:BHBuildSystem -eq 'AppVeyor') {
+            [xml]$PesterXml = Get-Content -Path $PesterResultsFile
+            $PesterXml.'test-results'.'test-suite'.type ='PowerShell'
+            $PesterXml.Save($PesterResultsFile)
+
             $WebClient = New-Object -TypeName System.Net.WebClient
-            $WebClient.UploadFile("https://ci.appveyor.com/api/testresults/xunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path -Path (Join-Path $ArtifactPath 'TestResults.xml')))
+            $WebClient.UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path -Path $PesterResultsFile))
         }
     }
     finally {
@@ -180,33 +179,18 @@ Add-BuildTask RunTest {
 
 # SYNOPSIS:Throws and error if any tests do not pass for CI usage
 Add-BuildTask ConfirmTests {
-    [Xml] $PesterXml = Get-Content (Join-Path $ArtifactPath 'TestResults.xml')
+    [Xml] $PesterXml = Get-Content -Path $PesterResultsFile
     $FailCount = $PesterXml.'Test-Results'.Failures
     Assert-Build ($FailCount -eq 0) ('Failed "{0}" unit tests.' -f $FailCount)
 }
 
-
-
-# SYNOPSIS: Creates Archived Zip and Nuget Artifacts
-Add-BuildTask Archive {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
-    $ModuleInfo = @{
-        ModuleName = $env:BHProjectName
-        ModuleVersion = $ModuleVersion
-    }
-
-    Publish-ArtifactZip @ModuleInfo
-}
-
-
-
 # SYNOPSIS: Run unit testing with Pester
-Add-BuildTask Publish {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
-    $NuSpecInfo = @{
-        PackageName = $env:BHProjectName
-        Author = $Author
+Add-BuildTask Publish ., {
+    $PublishParams = @{
+        Path = "$env:BHProjectPath/build"
+        Force = $true
+        Recurse = $false
     }
 
-    #Publish-NugetPackage @NuSpecInfo
+    Invoke-PSDeploy @PublishParams
 }

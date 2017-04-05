@@ -11,3 +11,4 @@ Contributions welcome:
   * mkdocs.yml points to markdown files in [the docs folder](https://github.com/twillin912/ServerManagementTools/tree/stable/docs)
   * Images are stored and accessible from [docs/images](https://github.com/twillin912/ServerManagementTools/tree/stable/docs/images)
 * Submit a pull request to the develop branch
+
