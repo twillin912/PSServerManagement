@@ -12,7 +12,7 @@
 RootModule = 'ServerManagementTools.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.4.0.52'
+ModuleVersion = '0.4.0.55'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()

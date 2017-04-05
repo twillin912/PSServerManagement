@@ -116,7 +116,7 @@ Add-BuildTask MarkdownHelp CheckPlatyPS, {
         $HelpParams = @{
             Module = $env:BHProjectName
             Locale = 'en-US'
-            OutputFolder = $DocsPath
+            OutputFolder = "$DocsPath/Functions"
             WithModulePage = $false
             HelpVersion = $ModuleVersion
         }
@@ -124,8 +124,6 @@ Add-BuildTask MarkdownHelp CheckPlatyPS, {
         PlatyPS\New-MarkdownHelp @HelpParams -Force -Verbose:$VerbosePreference | Out-Null
 
         if (Get-ChildItem -LiteralPath $DocsPath -Filter *.md -Recurse) {
-            PlatyPS\Update-MarkdownHelp -Path $DocsPath -Verbose:$VerbosePreference | Out-Null
-
             Get-ChildItem -LiteralPath $DocsPath -Directory -Recurse | ForEach-Object {
                 PlatyPS\Update-MarkdownHelp -Path $_.FullName -Verbose:$VerbosePreference | Out-Null
             }
