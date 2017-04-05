@@ -30,58 +30,58 @@ $ModuleVersion = New-Object -TypeName Version -ArgumentList $Version.Major, $Ver
 # Before/After Hooks for the Core Task: Clean
 ###############################################################################
 
-# Synopsis: Executes before the Clean task.
-Add-BuildTask BeforeClean {}
+# SYNOPSIS: Executes before the Clean task.
+#Add-BuildTask BeforeClean -Before Clean {}
 
-# Synopsis: Executes after the Clean task.
-Add-BuildTask AfterClean {}
+# SYNOPSIS: Executes after the Clean task.
+#Add-BuildTask AfterClean -After Clean {}
 
 ###############################################################################
 # Before/After Hooks for the Core Task: Analyze
 ###############################################################################
 
-# Synopsis: Executes before the Analyze task.
-Add-BuildTask BeforeAnalyze {}
+# SYNOPSIS: Executes before the Analyze task.
+#Add-BuildTask BeforeAnalyze -Before Analyze {}
 
-# Synopsis: Executes after the Analyze task.
-Add-BuildTask AfterAnalyze {}
+# SYNOPSIS: Executes after the Analyze task.
+#Add-BuildTask AfterAnalyze -After Analyze {}
 
 ###############################################################################
 # Before/After Hooks for the Core Task: Build
 ###############################################################################
 
-# Synopsis: Executes before the Test Task.
-Add-BuildTask BeforeBuild {}
+# SYNOPSIS: Executes before the Test Task.
+#Add-BuildTask BeforeBuild -Before Build {}
 
-# Synopsis: Executes after the Test Task.
-Add-BuildTask AfterBuild {}
+# SYNOPSIS: Executes after the Test Task.
+#Add-BuildTask AfterBuild -After Build {}
 
 ###############################################################################
 # Before/After Hooks for the Core Task: Test
 ###############################################################################
 
-# Synopsis: Executes before the Test Task.
-Add-BuildTask BeforeTest {}
+# SYNOPSIS: Executes before the Test Task.
+#Add-BuildTask BeforeTest -Before Test {}
 
-# Synopsis: Executes after the Test Task.
-Add-BuildTask AfterTest {}
+# SYNOPSIS: Executes after the Test Task.
+#Add-BuildTask AfterTest -After Test {}
 
 ###############################################################################
 # Before/After Hooks for the Core Task: Archive
 ###############################################################################
 
-# Synopsis: Executes before the Archive task.
-Add-BuildTask BeforeArchive {}
+# SYNOPSIS: Executes before the Archive task.
+#Add-BuildTask BeforeArchive -Before Archive {}
 
-# Synopsis: Executes after the Archive task.
-Add-BuildTask AfterArchive {}
+# SYNOPSIS: Executes after the Archive task.
+#Add-BuildTask AfterArchive -After Archive {}
 
 ###############################################################################
 # Before/After Hooks for the Core Task: Publish
 ###############################################################################
 
-# Synopsis: Executes before the Publish task.
-Add-BuildTask BeforePublish {}
+# SYNOPSIS: Executes before the Publish task.
+#Add-BuildTask BeforePublish -Before Publish {}
 
-# Synopsis: Executes after the Publish task.
-Add-BuildTask AfterPublish {}
+# SYNOPSIS: Executes after the Publish task.
+#Add-BuildTask AfterPublish -After Publish {}

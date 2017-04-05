@@ -3,6 +3,11 @@ $SuppressImportModule = $false
 . $PSScriptRoot/../Shared.ps1
 
 InModuleScope -ModuleName 'ServerManagementTools' {
-    Describe 'Exit-ExchangeMaintenanceMode Function' {
+    Describe 'Get-RDSession Function' {
+        Context 'Unit testing' {
+            It '' {
+
+            }
+        }
     }
 }

@@ -1,9 +1,9 @@
-# What is new in ServerManagementTools 0.3.0
+# What is new in ServerManagementTools 0.4.0
 
-## New Features
+## New Functions
 
----
+- `Get-RDSession`: This function uses the Cassia.dll to query local or remote computers for active and disconnection Remote Desktop sessions.
 
-- New Functions
-  - `Get-IISLogPath`
+## Updates
 
+- Updated the build process use utilize the InvokeBuild module.

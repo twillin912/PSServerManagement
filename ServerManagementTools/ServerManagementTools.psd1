@@ -12,7 +12,7 @@
 RootModule = 'ServerManagementTools.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.3.0.25'
+ModuleVersion = '0.4.0.52'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -54,7 +54,7 @@ Description = 'Collection of PowerShell functions for managing Windows Server.'
 # RequiredModules = @()
 
 # Assemblies that must be loaded prior to importing this module
-# RequiredAssemblies = @()
+RequiredAssemblies = 'bin/Cassia.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -63,13 +63,15 @@ Description = 'Collection of PowerShell functions for managing Windows Server.'
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-# FormatsToProcess = @()
+FormatsToProcess = 'Formats/Cassia.Format.ps1xml', 'Formats/Dfs.Format.ps1xml', 
+               'Formats/ServerManagementTools.Format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Get-DfsrBacklogStatus', 'Get-IISLogPath', 'Invoke-LogRotation'
+FunctionsToExport = 'Get-DfsrBacklogStatus', 'Get-IISLogPath', 'Get-RDSession', 
+               'Invoke-LogRotation'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
