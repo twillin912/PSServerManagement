@@ -12,7 +12,7 @@ function Get-RDSession {
     .EXAMPLE
     .NOTES
     .LINK
-        https://github.com/twillin912/ServerManagementTools
+        http://servermanagementtools.readthedocs.io/en/stable/functions/Get-RDSession
     .LINK
         http://code.msdn.microsoft.com/PSTerminalServices
     .LINK
@@ -52,17 +52,16 @@ function Get-RDSession {
     }
 
     process {
-        Write-Debug -Message "ComputerName: $ComputerName"
-        Write-Verbose -Message "Attempting remote connection to '$ComputerName'."
+        Write-Verbose -Message ($LocalizedData.RemoteConnect -f $ComputerName)
         if (!(Test-Connection -ComputerName $ComputerName -Count 1 -Quiet)) {
-            Write-Warning -Message ('Cannot connect to "{0}" because it is offline.' -f $ComputerName)
+            Write-Warning -Message ($LocalizedData.ComputerOffline -f $ComputerName)
             return
         }
         try {
             $TSRemoteServer = $TSManager.GetRemoteServer($ComputerName)
             $TSRemoteServer.Open()
             if (!($TSRemoteServer.IsOpen)) {
-                throw ('Remote connection to "{0}" failed.' -f $ComputerName)
+                throw ($LocalizedData.RemoteConnectError -f $ComputerName)
             }
 
             $Session = $TSRemoteServer.GetSessions()

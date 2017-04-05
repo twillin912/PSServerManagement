@@ -1,6 +1,6 @@
 ---
 external help file: ServerManagementTools-help.xml
-online version: https://github.com/twillin912/ServerManagementTools
+online version: http://servermanagementtools.readthedocs.io/en/stable/functions/Get-RDSession
 schema: 2.0.0
 ---
 
@@ -107,7 +107,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://github.com/twillin912/ServerManagementTools](https://github.com/twillin912/ServerManagementTools)
+[http://servermanagementtools.readthedocs.io/en/stable/functions/Get-RDSession](http://servermanagementtools.readthedocs.io/en/stable/functions/Get-RDSession)
 
 [http://code.msdn.microsoft.com/PSTerminalServices](http://code.msdn.microsoft.com/PSTerminalServices)
 

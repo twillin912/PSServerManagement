@@ -1,6 +1,6 @@
 ---
 external help file: ServerManagementTools-help.xml
-online version: https://github.com/twillin912/ServerManagementTools
+online version: http://servermanagementtools.readthedocs.io/en/stable/functions/Get-IISLogPath
 schema: 2.0.0
 ---
 
@@ -82,5 +82,5 @@ Check out my other scripts and projects @ https://github.com/twillin912
 
 ## RELATED LINKS
 
-[https://github.com/twillin912/ServerManagementTools](https://github.com/twillin912/ServerManagementTools)
+[http://servermanagementtools.readthedocs.io/en/stable/functions/Get-IISLogPath](http://servermanagementtools.readthedocs.io/en/stable/functions/Get-IISLogPath)
 

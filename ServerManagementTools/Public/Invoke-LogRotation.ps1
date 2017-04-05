@@ -15,7 +15,7 @@ function Invoke-LogRotation {
         Invoke-LogRotation -Path C:\Inetpub\Logs\LogFiles\W3SVC1 -CompressDays 10
         Archives the log files for the IIS 'Default Website' using the specified 10 day retention
     .LINK
-        https://github.com/twillin912/ServerManagementTools
+        http://servermanagementtools.readthedocs.io/en/stable/functions/Invoke-LogRotation
     .NOTES
         Author: Trent Willingham
         Check out my other projects on GitHub https://github.com/twillin912

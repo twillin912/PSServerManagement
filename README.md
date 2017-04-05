@@ -23,3 +23,6 @@ Get a list of available commands
 PS> Get-Command -Module ServerManagementTools
 ```
 
+## Notes
+
+Thanks go to:

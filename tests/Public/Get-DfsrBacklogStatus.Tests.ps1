@@ -281,7 +281,7 @@ InModuleScope -ModuleName 'ServerManagementTools' {
             }
             It 'Error should contain descriptive message' {
                 $FilteredErrors = $ErrorOut | Where-Object { $PSItem.Exception -notmatch 'MockNoCimSupport' }
-                $FilteredErrors.Exception | Should Match 'Cannot bind to DfsrReplicated classes'
+                $FilteredErrors.Exception | Should Match "Cannot bind .* '$BrokenComputer'."
             }
         }
 

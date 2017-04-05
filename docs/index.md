@@ -4,8 +4,8 @@ ServerManagementTools uses ReadTheDocs to host our documentation.  This allows u
 
 Contributions welcome:
 
-* Clone the [ServerManagementTools repo](https://github.com/twillin912/ServerManagementTools)
-* Checkout the dev branch
+* Clone the [ServerManagementTools repo](https://github.com/twillin912/ServerManagementTools/tree/stable)
+* Checkout the develop branch
 * Commit changes
   * Organization is described in the [mkdocs.yml](https://github.com/twillin912/ServerManagementTools/blob/stable/mkdocs.yml) file
   * mkdocs.yml points to markdown files in [the docs folder](https://github.com/twillin912/ServerManagementTools/tree/stable/docs)
