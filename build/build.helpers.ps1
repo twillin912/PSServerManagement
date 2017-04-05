@@ -92,6 +92,10 @@ function Publish-ArtifactZip {
     $ZipFilePath = Join-Path $ArtifactPath "$env:BHProjectName v$ModuleVersion.zip"
     if ( Test-Path -Path $ZipFilePath ) { Remove-Item -Path $ZipFilePath }
     [System.IO.Compression.ZipFile]::CreateFromDirectory($env:BHPSModulePath, $zipFilePath)
+
+    if ($env:BHBuildSystem -eq 'AppVeyor') {
+        Push-AppveyorArtifact -Path $ZipFilePath
+    }
 }
 
 function Publish-NugetPackage {

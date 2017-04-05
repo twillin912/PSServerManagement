@@ -21,7 +21,10 @@ Add-BuildTask Init {
     $env:BHModuleVersion = $ModuleVersion.ToString()
 
     New-Item -Path "$ArtifactPath" -ItemType Directory -Force | Out-Null
-    #New-Item -Path "$ArtifactPath" -ItemType Directory -Force | Out-Null
+
+    if ($env:BHBuildSystem -eq 'AppVeyor') {
+        Update-AppveyorBuild -Version $env:BHModuleVersion
+    }
 }
 
 # SYNOPSIS: Clean artifacts directory
@@ -83,6 +86,7 @@ Add-BuildTask Build {
         if ($Tags) { $ManifestParams.Add('Tags', $Tags) }
 
     Update-ModuleManifest -Path "$env:BHPSModuleManifest" @ManifestParams
+
 
 }
 
@@ -171,6 +175,11 @@ Add-BuildTask RunTest {
 
         $PesterResults = Invoke-Pester @PesterParams
         $PesterResults | ConvertTo-Json -Depth 5 | Set-Content (Join-Path $ArtifactPath 'PesterResults.json')
+
+        if ($env:BHBuildSystem -eq 'AppVeyor') {
+            $WebClient = New-Object -TypeName System.Net.WebClient
+            $WebClient.UploadFile("https://ci.appveyor.com/api/testresults/xunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path -Path (Join-Path $ArtifactPath 'TestResults.xml')))
+        }
     }
     finally {
         Microsoft.PowerShell.Management\Pop-Location
