@@ -93,18 +93,10 @@ Add-BuildTask Build {
 
 
 # SYNOPSIS: Build help files with PlatyPS
-Add-BuildTask BuildHelp CheckPlatyPS, MarkdownHelp, ExternalHelp
-
-# SYNOPSIS: Ensure PlatyPS is installed, and imported.
-Add-BuildTask CheckPlatyPS {
-    if ($null -eq (Get-Module -ListAvailable PlatyPS)) {
-        Install-Module -Name PlatyPS -Repository PSGallery -Scope CurrentUser
-    }
-    Import-Module -Name PlatyPS
-}
+Add-BuildTask BuildHelp MarkdownHelp, ExternalHelp
 
 # SYNOPSIS: Create markdown help from module
-Add-BuildTask MarkdownHelp CheckPlatyPS, {
+Add-BuildTask MarkdownHelp {
     $ModuleInfo = Import-Module $env:BHPSModuleManifest -Global -Force -PassThru
 
     try {
@@ -139,7 +131,7 @@ Add-BuildTask MarkdownHelp CheckPlatyPS, {
 }
 
 # SYNOPSIS:
-Add-BuildTask ExternalHelp CheckPlatyPS, {
+Add-BuildTask ExternalHelp {
     if (!(Get-ChildItem -LiteralPath $DocsPath -Filter *.md -Recurse -ErrorAction SilentlyContinue)) {
         Write-Warning -Message ('No markdown help files to process. Skipping "{0}" task.' -f $Task.Name)
         return

@@ -3,7 +3,7 @@ Param (
     [string] $Task = '.'
 )
 
-$RequiredModules = @('BuildHelpers', 'InvokeBuild', 'Pester', 'PSDeploy', 'PSScriptAnalyzer')
+$RequiredModules = @('BuildHelpers', 'InvokeBuild', 'Pester', 'PlatyPS', 'PSDeploy', 'PSScriptAnalyzer')
 
 Get-PackageProvider -Name NuGet -ForceBootstrap | Out-Null
 foreach ( $Module in $RequiredModules ) {
