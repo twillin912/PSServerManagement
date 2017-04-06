@@ -6,22 +6,20 @@
 . $env:BHProjectPath\Build\build.settings.ps1 -ProjectRoot $env:BHProjectPath
 . $env:BHProjectPath\module.settings.ps1
 
-# Include: build.helpers.ps1
-. $env:BHProjectPath\Build\build.helpers.ps1
-
-
 Set-StrictMode -Version Latest
 
-
 # SYNOPSIS: Default build task
-Add-BuildTask . Init, Clean, Build, BuildHelp, Analyze, Test, Archive, Publish
+Add-BuildTask . Init, Clean, Build, BuildHelp, Analyze, Test
 
 Add-BuildTask Init {
     $env:BHBuildNumber = $ModuleVersion.Revision
     $env:BHModuleVersion = $ModuleVersion.ToString()
 
     New-Item -Path "$ArtifactPath" -ItemType Directory -Force | Out-Null
-    #New-Item -Path "$ArtifactPath" -ItemType Directory -Force | Out-Null
+
+    if ($env:BHBuildSystem -eq 'AppVeyor') {
+        Update-AppveyorBuild -Version $env:BHModuleVersion
+    }
 }
 
 # SYNOPSIS: Clean artifacts directory
@@ -34,24 +32,28 @@ Add-BuildTask Clean Init, {
 
 
 
-Add-BuildTask Analyze BeforeAnalyze, PSParser, PSAnalyzer, AfterAnalyze
+Add-BuildTask Analyze PSParser, PSAnalyzer
 
 # SYNOPSIS: Lint code with PSScriptAnalyzer
 Add-BuildTask PSParser {
-    Get-ChildItem -Path $env:BHPSModulePath -Filter *.ps1 -Recurse | ForEach-Object {
+    Get-ChildItem -Path $env:BHPSModulePath -Filter '*.ps1' -Exclude '*.Format.ps1xml' -Recurse | ForEach-Object {
         $Errors = $null
         $FileContent = Get-Content -Path $_.FullName -ErrorAction Stop
         [System.Management.Automation.PSParser]::Tokenize($FileContent,[ref]$Errors) | Out-Null
-        if ( $Errors ) { throw 'One or more PSParser errors/warnings were found.' }
+        if ($Errors) {
+            $_.Name
+            $Errors | Format-List
+            throw 'One or more PSParser errors/warnings were found.'
+        }
     }
 }
 
 # SYNOPSIS: Lint code with PSScriptAnalyzer
 Add-BuildTask PSAnalyzer {
     $AnalyzeResults = Invoke-ScriptAnalyzer -Path $env:BHPSModulePath -Recurse
-    $AnalyzeResults | ConvertTo-Json | Set-Content ( Join-Path $ArtifactPath 'ScriptAnalysisResults.json' )
+    $AnalyzeResults | ConvertTo-Json | Set-Content (Join-Path $ArtifactPath 'ScriptAnalysisResults.json')
 
-    if ( $AnalyzeResults ) {
+    if ($AnalyzeResults) {
          $AnalyzeResults | Format-Table
          throw 'One or more PSScriptAnalyzer errors/warnings where found.'
     }
@@ -60,66 +62,59 @@ Add-BuildTask PSAnalyzer {
 
 
 # SYNOPSIS:
-Add-BuildTask Build BeforeBuild, {
+Add-BuildTask Build {
     $Functions = Get-ChildItem -Path "$env:BHPSModulePath/Public" -Filter *.ps1 -Recurse
-    $Formats = Get-ChildItem -Path "$env:BHPSModulePath" -Filter *.Formats.ps1xml
+    $Formats = Get-ChildItem -Path "$env:BHPSModulePath/Formats" -Filter *.Format.ps1xml -Recurse
 
     $ManifestParams = @{}
         $ManifestParams.Add('ModuleVersion', $ModuleVersion)
-        if ( $Functions ) { $ManifestParams.Add('FunctionsToExport',$Functions.BaseName) }
-        if ( $Formats ) { $ManifestParams.Add('FormatsToProcess', $Formats.Name) }
+        if ($Functions) { $ManifestParams.Add('FunctionsToExport',$Functions.BaseName) }
+        if ($Formats) { $ManifestParams.Add('FormatsToProcess',
+            ($Formats | ForEach-Object {"Formats/$_"})
+        )}
 
-        if ( $Author ) { $ManifestParams.Add('Author', $Author) }
-        if ( $Description ) { $ManifestParams.Add('Description', $Description) }
-        if ( $ProjectUri) { $ManifestParams.Add('ProjectUri', $ProjectUri) }
-        if ( $LicenseUri) { $ManifestParams.Add('LicenseUri', $LicenseUri) }
-        if ( $ReleaseNotes) { $ManifestParams.Add('ReleaseNotes', $ReleaseNotes) }
-        if ( $Tags) { $ManifestParams.Add('Tags', $Tags) }
+        if ($Author) { $ManifestParams.Add('Author', $Author) }
+        if ($Description) { $ManifestParams.Add('Description', $Description) }
+        if ($ProjectUri) { $ManifestParams.Add('ProjectUri', $ProjectUri) }
+        if ($LicenseUri) { $ManifestParams.Add('LicenseUri', $LicenseUri) }
+        if ($ReleaseNotes) { $ManifestParams.Add('ReleaseNotes', $ReleaseNotes) }
+        if ($Tags) { $ManifestParams.Add('Tags', $Tags) }
 
     Update-ModuleManifest -Path "$env:BHPSModuleManifest" @ManifestParams
 
-}, AfterBuild
+
+}
 
 
 
 # SYNOPSIS: Build help files with PlatyPS
-Add-BuildTask BuildHelp CheckPlatyPS, MarkdownHelp, ExternalHelp
-
-# SYNOPSIS: Ensure PlatyPS is installed, and imported.
-Add-BuildTask CheckPlatyPS {
-    if ( $null -eq ( Get-Module -ListAvailable PlatyPS ) ) {
-        Install-Module -Name PlatyPS -Repository PSGallery -Scope CurrentUser
-    }
-    Import-Module -Name PlatyPS
-}
+Add-BuildTask BuildHelp MarkdownHelp, ExternalHelp
 
 # SYNOPSIS: Create markdown help from module
-Add-BuildTask MarkdownHelp CheckPlatyPS, {
+Add-BuildTask MarkdownHelp {
     $ModuleInfo = Import-Module $env:BHPSModuleManifest -Global -Force -PassThru
 
     try {
-        if ( $ModuleInfo.ExportedCommands.Count -eq 0 ) {
+        if ($ModuleInfo.ExportedCommands.Count -eq 0) {
             Write-Warning -Message ('No commands have been exported. Skipping "{0}" task.' -f $Task.Name)
             return
         }
 
-        if ( -not ( Test-Path -LiteralPath $DocsPath ) ) {
+        if (!(Test-Path -LiteralPath $DocsPath)) {
             New-Item -Path $DocsPath -ItemType Directory | Out-Null
         }
 
         $HelpParams = @{
             Module = $env:BHProjectName
             Locale = 'en-US'
-            OutputFolder = $DocsPath
+            OutputFolder = "$DocsPath/Functions"
             WithModulePage = $false
             HelpVersion = $ModuleVersion
         }
 
-        PlatyPS\New-MarkdownHelp @HelpParams -Force -Verbose:$VerbosePreference
+        PlatyPS\New-MarkdownHelp @HelpParams -Force -Verbose:$VerbosePreference | Out-Null
 
-        if ( Get-ChildItem -LiteralPath $DocsPath -Filter *.md -Recurse ) {
-            PlatyPS\Update-MarkdownHelp -Path $DocsPath -Verbose:$VerbosePreference | Out-Null
-
+        if (Get-ChildItem -LiteralPath $DocsPath -Filter *.md -Recurse) {
             Get-ChildItem -LiteralPath $DocsPath -Directory -Recurse | ForEach-Object {
                 PlatyPS\Update-MarkdownHelp -Path $_.FullName -Verbose:$VerbosePreference | Out-Null
             }
@@ -131,18 +126,18 @@ Add-BuildTask MarkdownHelp CheckPlatyPS, {
 }
 
 # SYNOPSIS:
-Add-BuildTask ExternalHelp CheckPlatyPS, {
-    if ( -not ( Get-ChildItem -LiteralPath $DocsPath -Filter *.md -Recurse -ErrorAction SilentlyContinue ) ) {
+Add-BuildTask ExternalHelp {
+    if (!(Get-ChildItem -LiteralPath $DocsPath -Filter *.md -Recurse -ErrorAction SilentlyContinue)) {
         Write-Warning -Message ('No markdown help files to process. Skipping "{0}" task.' -f $Task.Name)
         return
     }
-    PlatyPS\New-ExternalHelp -Path "$DocsPath" -Force -OutputPath "$env:BHPSModulePath/en-US"
+    PlatyPS\New-ExternalHelp -Path "$DocsPath" -Force -OutputPath "$env:BHPSModulePath/en-US" | Out-Null
 }
 
 
 
 # SYNOPSIS: Run/Publish Tests and Fail Build on Error
-Add-BuildTask Test BeforeTest, RunTest, ConfirmTests, AfterTest
+Add-BuildTask Test RunTest, ConfirmTests
 
 # SYNOPSIS: Run unit testing with Pester
 Add-BuildTask RunTest {
@@ -157,7 +152,7 @@ Add-BuildTask RunTest {
         Microsoft.PowerShell.Management\Push-Location -LiteralPath $TestPath
 
         $PesterParams = @{
-            OutputFile = ( Join-Path $ArtifactPath 'TestResults.xml' )
+            OutputFile = $PesterResultsFile
             OutputFormat = 'NUnitXml'
             Strict = $true
             PassThru = $true
@@ -166,7 +161,16 @@ Add-BuildTask RunTest {
         }
 
         $PesterResults = Invoke-Pester @PesterParams
-        $PesterResults | ConvertTo-Json -Depth 5 | Set-Content ( Join-Path $ArtifactPath 'PesterResults.json' )
+        $PesterResults | ConvertTo-Json -Depth 5 | Set-Content (Join-Path $ArtifactPath 'PesterResults.json')
+
+        if ($env:BHBuildSystem -eq 'AppVeyor') {
+            [xml]$PesterXml = Get-Content -Path $PesterResultsFile
+            $PesterXml.'test-results'.'test-suite'.type ='PowerShell'
+            $PesterXml.Save($PesterResultsFile)
+
+            $WebClient = New-Object -TypeName System.Net.WebClient
+            $WebClient.UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path -Path $PesterResultsFile))
+        }
     }
     finally {
         Microsoft.PowerShell.Management\Pop-Location
@@ -175,33 +179,18 @@ Add-BuildTask RunTest {
 
 # SYNOPSIS:Throws and error if any tests do not pass for CI usage
 Add-BuildTask ConfirmTests {
-    [Xml] $PesterXml = Get-Content ( Join-Path $ArtifactPath 'TestResults.xml' )
+    [Xml] $PesterXml = Get-Content -Path $PesterResultsFile
     $FailCount = $PesterXml.'Test-Results'.Failures
     Assert-Build ($FailCount -eq 0) ('Failed "{0}" unit tests.' -f $FailCount)
 }
 
-
-
-# SYNOPSIS: Creates Archived Zip and Nuget Artifacts
-Add-BuildTask Archive BeforeArchive, {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
-    $ModuleInfo = @{
-        ModuleName = $env:BHProjectName
-        ModuleVersion = $ModuleVersion
-    }
-
-    Publish-ArtifactZip @ModuleInfo
-}, AfterArchive
-
-
-
 # SYNOPSIS: Run unit testing with Pester
-Add-BuildTask Publish BeforePublish, {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
-    $NuSpecInfo = @{
-        PackageName = $env:BHProjectName
-        Author = $Author
+Add-BuildTask Publish ., {
+    $PublishParams = @{
+        Path = "$env:BHProjectPath/build"
+        Force = $true
+        Recurse = $false
     }
 
-    #Publish-NugetPackage @NuSpecInfo
-}, AfterPublish
+    Invoke-PSDeploy @PublishParams
+}

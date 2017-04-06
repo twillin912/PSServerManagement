@@ -3,7 +3,10 @@ repo_url: https://github.com/twillin912/ServerManagementTools
 theme: readthedocs
 pages:
   - Home: index.md
+  - ServerManagementTools Basics:
+    - Quick Start: quickstart.md
   - Functions:
-    - Get-DfsrBacklogStatus: en-US/Get-DfsrBacklogStatus.md
-    - Get-IISLogPath: en-US/Get-IISLogPath.md
-    - Invoke-LogRotation: en-US/Invoke-LogRotation.md
+    - Get-DfsrBacklogStatus: Functions/Get-DfsrBacklogStatus.md
+    - Get-IISLogPath: Functions/Get-IISLogPath.md
+    - Get-RDSession: Functions/Get-RDSession.md
+    - Invoke-LogRotation: Functions/Invoke-LogRotation.md

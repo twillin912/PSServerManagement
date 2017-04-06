@@ -17,7 +17,7 @@ function Get-DfsrBacklogStatus {
         Get-DfsrBacklogStatus -ComputerName 'MyServer' -FolderName 'Folder01'
         Retrieves the replicated folder 'Folder01' and its inbound backlog from each partner.
     .LINK
-        https://github.com/twillin912/ServerManagementTools
+        http://servermanagementtools.readthedocs.io/en/stable/functions/Get-DfsrBacklogStatus
     .NOTES
         Author: Trent Willingham
         Check out my other projects on GitHub https://github.com/twillin912
@@ -41,7 +41,7 @@ function Get-DfsrBacklogStatus {
     Process {
         foreach ( $Computer in $ComputerName ) {
             if ( ! ( Test-Connection -ComputerName $Computer -Count 1 -Quiet ) ) {
-                Write-Error -Message "Cannot connect to '$Computer' because it is offline."
+                Write-Error -Message ($LocalizedData.ComputerOffline -f $Computer)
                 continue
             }
 
@@ -50,13 +50,13 @@ function Get-DfsrBacklogStatus {
                 $DfsrFolderInfo = Get-CimInstance -ComputerName $Computer -Namespace 'root\MicrosoftDFS' -ClassName 'DfsrReplicatedFolderInfo' -ErrorAction Stop
             }
             catch {
-                Write-Warning -Message "Cannot bind to CIM instance on $Computer, failing back to WMI."
+                Write-Warning -Message ($LocalizedData.CIMFallBack -f $Computer)
                 $WmiFailback = $true
                 $DfsrConnInfo = Get-WmiObject -ComputerName $Computer -Namespace 'root\MicrosoftDFS' -Class 'DfsrConnectionInfo'
                 $DfsrFolderInfo = Get-WmiObject -ComputerName $Computer -Namespace 'root\MicrosoftDFS' -Class 'DfsrReplicatedFolderInfo'
             }
             if ( -not ( $DfsrConnInfo -and $DfsrFolderInfo ) ) {
-                Write-Error -Message "Cannot bind to DfsrReplicated classes."
+                Write-Error -Message ($LocalizedData.WMIFailed -f $Computer)
             }
 
             if ( $FolderName ) {
