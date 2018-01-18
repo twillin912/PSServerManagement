@@ -1,9 +1,7 @@
 # ServerManagementTools PowerShell Module
 
 [![Build status](https://ci.appveyor.com/api/projects/status/github/twillin912/servermanagementtools?branch=stable&passingText=stable%20-%20OK&svg=true)](https://ci.appveyor.com/project/twillin912/servermanagementtools/branch/stable)
-[![Build status](https://ci.appveyor.com/api/projects/status/github/twillin912/servermanagementtools?branch=develop&passingText=develop%20-%20OK&svg=true)](https://ci.appveyor.com/project/twillin912/servermanagementtools/branch/develop)
-[![Documentation Status](http://readthedocs.org/projects/servermanagementtools/badge/?version=stable)](http://servermanagementtools.readthedocs.io/en/stable/?badge=stable)
-[![Documentation Status](http://readthedocs.org/projects/servermanagementtools/badge/?version=develop)](http://servermanagementtools.readthedocs.io/en/develop/?badge=develop)
+[![Documentation Status](http://readthedocs.org/projects/servermanagementtools/badge/?version=latest)](http://servermanagementtools.readthedocs.io/en/latest/?badge=latest)
 
 Collection of PowerShell functions for managing Windows Server.
 
@@ -24,5 +22,3 @@ PS> Get-Command -Module ServerManagementTools
 ```
 
 ## Notes
-
-Thanks go to:

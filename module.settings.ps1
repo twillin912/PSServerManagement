@@ -20,4 +20,3 @@ $ReleaseNotes   = "${ProjectUri}/blob/stable/RELEASENOTES.md"
 
 [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
 $GitRepo        = "twillin912/${env:BHProjectName}"
-

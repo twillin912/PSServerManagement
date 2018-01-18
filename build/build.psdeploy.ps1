@@ -33,3 +33,21 @@ if(
         }
     }
 }
+
+# Publish to internal gallery
+if(
+    $env:BHProjectName -and $env:BHProjectName.Count -eq 1 -and
+    $env:BHBuildSystem -eq 'Unknown' -and $env:InternalGallery -and
+    $env:NugetApiKey
+   )
+{
+    Deploy Module {
+        By PSGalleryModule {
+            FromSource $env:BHPSModulePath
+            To $env:InternalGallery
+            WithOptions @{
+                ApiKey = $env:NugetApiKey
+            }
+        }
+    }
+}

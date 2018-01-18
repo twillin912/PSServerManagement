@@ -1,4 +1,4 @@
-# What is new in ServerManagementTools 0.4.0
+# What is new in ServerManagementTools v0.4
 
 ## New Functions
 
