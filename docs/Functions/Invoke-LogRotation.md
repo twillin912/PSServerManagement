@@ -1,5 +1,6 @@
 ---
 external help file: ServerManagementTools-help.xml
+Module Name: ServerManagementTools
 online version: http://servermanagementtools.readthedocs.io/en/stable/functions/Invoke-LogRotation
 schema: 2.0.0
 ---
@@ -12,7 +13,8 @@ Compresses log files by month.
 ## SYNTAX
 
 ```
-Invoke-LogRotation [-Path] <String[]> [[-CompressDays] <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-LogRotation [-Path] <String[]> [[-CompressDays] <Int32>] [-Include <String>] [-Exclude <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -21,14 +23,14 @@ Once the contents of the archive are verified the original log files are deleted
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### EXAMPLE 1
 ```
 Invoke-LogRotation -Path C:\Inetpub\Logs\LogFiles\W3SVC1
 ```
 
 Archives the log files for the IIS 'Default Website' using the default 5 day retention
 
-### -------------------------- EXAMPLE 2 --------------------------
+### EXAMPLE 2
 ```
 Invoke-LogRotation -Path C:\Inetpub\Logs\LogFiles\W3SVC1 -CompressDays 10
 ```
@@ -44,7 +46,7 @@ Invoke-LogRotation processes the log files in the specified locations.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -60,11 +62,41 @@ If you do not specify this parameter, the cmdlet will retain 5 days.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
 Default value: 5
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Include
+{{Fill Include Description}}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: *.log
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Exclude
+{{Fill Exclude Description}}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

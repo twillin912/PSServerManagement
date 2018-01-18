@@ -1,5 +1,6 @@
 ---
 external help file: ServerManagementTools-help.xml
+Module Name: ServerManagementTools
 online version: http://servermanagementtools.readthedocs.io/en/stable/functions/Get-RDSession
 schema: 2.0.0
 ---
@@ -21,12 +22,12 @@ The Get-RDSession cmdlet retrieves a list of Remote Desktop sessions from a loca
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### EXAMPLE 1
 ```
 
 ```
 
-### -------------------------- EXAMPLE 2 --------------------------
+### EXAMPLE 2
 ```
 
 ```
@@ -70,7 +71,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -85,7 +86,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4

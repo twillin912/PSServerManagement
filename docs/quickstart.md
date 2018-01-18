@@ -17,4 +17,3 @@ PS> Get-Command -Module ServerManagementTools
 ```
 
 [![Source](images/QuickStart-GetCommand.png)](images/QuickStart-GetCommand.png)
-
