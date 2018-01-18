@@ -19,4 +19,3 @@ Microsoft.PowerShell.Utility\Import-LocalizedData LocalizedData -FileName Server
 
 #Export only the functions in the Public folder.
 Export-ModuleMember -Function $Public.Basename
-
