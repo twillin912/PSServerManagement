@@ -2,34 +2,37 @@ function Get-DfsrBacklogStatus {
     <#
     .SYNOPSIS
         Retrieves the count of pending file updates between two DFS Replication partners.
+
     .DESCRIPTION
         The Get-DfsrBacklogStatus cmdlet retrieves a count of pending updates between two computers that participate in Distributed File System (DFS) Replication.
 
         Updates can be new, modified, or deleted files and folders.  Any files or folders listed in the DFS Replication backlog have not yet replicated from the source computer to the destination computer. This is not necessarily an indication of problems. A backlog indicates latency, and a backlog may be expected in your environment, depending on configuration, rate of change, network, and other factors.
-    .PARAMETER ComputerName
-        Specifies the name of the sending computer. A source computer is also called an outbound or upstream computer.
-    .PARAMETER FolderName
-        Specifies an array of names of replicated folders. If you do not specify this parameter, the cmdlet queries for all participating replicated folders. You can specify multiple folders, separated by commas.
+
     .EXAMPLE
         Get-DfsrBacklogStatus -ComputerName 'MyServer'
         Retrieves all configured replicated folders and their inbound backlog from each partner.
+
     .EXAMPLE
         Get-DfsrBacklogStatus -ComputerName 'MyServer' -FolderName 'Folder01'
         Retrieves the replicated folder 'Folder01' and its inbound backlog from each partner.
+
     .LINK
         http://servermanagementtools.readthedocs.io/en/stable/functions/Get-DfsrBacklogStatus
+
     .NOTES
         Author: Trent Willingham
         Check out my other projects on GitHub https://github.com/twillin912
     #>
     [CmdletBinding()]
     [OutputType([PSObject])]
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWMICmdlet", "", Scope="Function", Target="*")]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWMICmdlet", "", Scope = "Function", Target = "*")]
     Param
     (
+        # Specifies the name of the sending computer. A source computer is also called an outbound or upstream computer.
         [Parameter()]
         [string[]] $ComputerName = "localhost",
 
+        # Specifies an array of names of replicated folders. If you do not specify this parameter, the cmdlet queries for all participating replicated folders. You can specify multiple folders, separated by commas.
         [Parameter()]
         [string[]] $FolderName
     )
@@ -66,14 +69,15 @@ function Get-DfsrBacklogStatus {
             foreach ( $Folder in $DfsrFolderInfo ) {
 
                 $FolderValues = @{
-                    'FolderName'    = $Folder.ReplicatedFolderName
-                    'GroupName'     = $Folder.ReplicationGroupName
-                    'State'         = $Folder.State
+                    'FolderName' = $Folder.ReplicatedFolderName
+                    'GroupName'  = $Folder.ReplicationGroupName
+                    'State'      = $Folder.State
                 }
 
                 if ( $WmiFailback ) {
                     $VersionVector = (Invoke-WmiMethod -InputObject $Folder -Name 'GetVersionVector').VersionVector
-                } else {
+                }
+                else {
                     $VersionVector = (Invoke-CimMethod -InputObject $Folder -MethodName 'GetVersionVector').VersionVector
                 }
 
@@ -93,10 +97,10 @@ function Get-DfsrBacklogStatus {
                     }
                     finally {
                         $OutputValues = $FolderValues.Clone()
-                        $OutputValues.Add('PartnerName',$Partner.PartnerName)
-                        $OutputValues.Add('Backlog',$Backlog.BacklogFileCount)
+                        $OutputValues.Add('PartnerName', $Partner.PartnerName)
+                        $OutputValues.Add('Backlog', $Backlog.BacklogFileCount)
                         $OutputObject = New-Object -TypeName PSObject -Property $OutputValues
-                        $OutputObject.PSObject.TypeNames.Insert(0,'ServerManagementTools.DFS.BacklogStatus')
+                        $OutputObject.PSObject.TypeNames.Insert(0, 'ServerManagementTools.DFS.BacklogStatus')
                         $Output += $OutputObject
                     }
                 } #foreach Partner

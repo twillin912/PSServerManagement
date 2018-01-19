@@ -7,7 +7,7 @@ $Author         = 'Trent Willingham'
 [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
 $Description    = 'Collection of PowerShell functions for managing Windows Server.'
 [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
-$Tags           = @()
+$Tags           = @('IIS','Log','Logs','RDP','Rotate','Rotation','SChannel','Security')
 
 [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
 $ProjectUri     = "https://github.com/twillin912/${env:BHProjectName}"

@@ -3,8 +3,13 @@
 ## v0.4 (2017-04-05)
 
 - New Functions
-  - `Get-RDSession`: This function uses the Cassia.dll to query local or remote computers for active and disconnection Remote Desktop sessions.
+
+  - The `Disable-SChannelFeature` cmdlet disables features in the SChannel security suite on Windows computers.  This cmdlet can be used to disable ciphers, key exchanges, and protocols that are consider insecure.
+
+  - The `Get-RDSession` cmdlet uses the Cassia.dll to query local or remote computers for active and disconnection Remote Desktop sessions.
+
 - Updates
+
   - Updated the build process use utilize the InvokeBuild module.
 
 ## v0.3 (2017-02-17)
