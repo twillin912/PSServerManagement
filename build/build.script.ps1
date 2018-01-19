@@ -39,7 +39,7 @@ Add-BuildTask PSParser {
     Get-ChildItem -Path $env:BHPSModulePath -Filter '*.ps1' -Exclude '*.Format.ps1xml' -Recurse | ForEach-Object {
         $Errors = $null
         $FileContent = Get-Content -Path $_.FullName -ErrorAction Stop
-        [System.Management.Automation.PSParser]::Tokenize($FileContent,[ref]$Errors) | Out-Null
+        [System.Management.Automation.PSParser]::Tokenize($FileContent, [ref]$Errors) | Out-Null
         if ($Errors) {
             $_.Name
             $Errors | Format-List
@@ -54,8 +54,8 @@ Add-BuildTask PSAnalyzer {
     $AnalyzeResults | ConvertTo-Json | Set-Content (Join-Path $ArtifactPath 'ScriptAnalysisResults.json')
 
     if ($AnalyzeResults) {
-         $AnalyzeResults | Format-Table
-         throw 'One or more PSScriptAnalyzer errors/warnings where found.'
+        $AnalyzeResults | Format-Table
+        throw 'One or more PSScriptAnalyzer errors/warnings where found.'
     }
 }
 
@@ -67,18 +67,20 @@ Add-BuildTask Build {
     $Formats = Get-ChildItem -Path "$env:BHPSModulePath/Formats" -Filter *.Format.ps1xml -Recurse
 
     $ManifestParams = @{}
-        $ManifestParams.Add('ModuleVersion', $ModuleVersion)
-        if ($Functions) { $ManifestParams.Add('FunctionsToExport',$Functions.BaseName) }
-        if ($Formats) { $ManifestParams.Add('FormatsToProcess',
+    $ManifestParams.Add('ModuleVersion', $ModuleVersion)
+    if ($Functions) { $ManifestParams.Add('FunctionsToExport', $Functions.BaseName) }
+    if ($Formats) {
+        $ManifestParams.Add('FormatsToProcess',
             ($Formats | ForEach-Object {"Formats/$_"})
-        )}
+        )
+    }
 
-        if ($Author) { $ManifestParams.Add('Author', $Author) }
-        if ($Description) { $ManifestParams.Add('Description', $Description) }
-        if ($ProjectUri) { $ManifestParams.Add('ProjectUri', $ProjectUri) }
-        if ($LicenseUri) { $ManifestParams.Add('LicenseUri', $LicenseUri) }
-        if ($ReleaseNotes) { $ManifestParams.Add('ReleaseNotes', $ReleaseNotes) }
-        if ($Tags) { $ManifestParams.Add('Tags', $Tags) }
+    if ($Author) { $ManifestParams.Add('Author', $Author) }
+    if ($Description) { $ManifestParams.Add('Description', $Description) }
+    if ($ProjectUri) { $ManifestParams.Add('ProjectUri', $ProjectUri) }
+    if ($LicenseUri) { $ManifestParams.Add('LicenseUri', $LicenseUri) }
+    if ($ReleaseNotes) { $ManifestParams.Add('ReleaseNotes', $ReleaseNotes) }
+    if ($Tags) { $ManifestParams.Add('Tags', $Tags) }
 
     Update-ModuleManifest -Path "$env:BHPSModuleManifest" @ManifestParams
 
@@ -105,11 +107,11 @@ Add-BuildTask MarkdownHelp {
         }
 
         $HelpParams = @{
-            Module = $env:BHProjectName
-            Locale = 'en-US'
-            OutputFolder = "$DocsPath/Functions"
+            Module         = $env:BHProjectName
+            Locale         = 'en-US'
+            OutputFolder   = "$DocsPath/Functions"
             WithModulePage = $false
-            HelpVersion = $ModuleVersion
+            HelpVersion    = $ModuleVersion
         }
 
         PlatyPS\New-MarkdownHelp @HelpParams -Force -Verbose:$VerbosePreference | Out-Null
@@ -158,11 +160,11 @@ Add-BuildTask RunTest {
         Microsoft.PowerShell.Management\Push-Location -LiteralPath $TestPath
 
         $PesterParams = @{
-            OutputFile = $PesterResultsFile
+            OutputFile   = $PesterResultsFile
             OutputFormat = 'NUnitXml'
-            Strict = $true
-            PassThru = $true
-            EnableExit = $false
+            Strict       = $true
+            PassThru     = $true
+            EnableExit   = $false
             CodeCoverage = (Get-ChildItem -Path "$env:BHPSModulePath/*.ps1" -Recurse)
         }
 
@@ -171,7 +173,7 @@ Add-BuildTask RunTest {
 
         if ($env:BHBuildSystem -eq 'AppVeyor') {
             [xml]$PesterXml = Get-Content -Path $PesterResultsFile
-            $PesterXml.'test-results'.'test-suite'.type ='PowerShell'
+            $PesterXml.'test-results'.'test-suite'.type = 'PowerShell'
             $PesterXml.Save($PesterResultsFile)
 
             $WebClient = New-Object -TypeName System.Net.WebClient
@@ -192,9 +194,12 @@ Add-BuildTask ConfirmTests {
 
 # SYNOPSIS: Publish Module using PSDeploy
 Add-BuildTask Publish ., {
+    $NewBuild = New-Object -TypeName Version -ArgumentList $ModuleVersion.Major, $ModuleVersion.Minor, ($ModuleVersion.Build + 1)
+    Update-ModuleManifest -Path "$env:BHPSModuleManifest" -ModuleVersion $NewBuild
+
     $PublishParams = @{
-        Path = "$env:BHProjectPath/build"
-        Force = $true
+        Path    = "$env:BHProjectPath/build"
+        Force   = $true
         Recurse = $false
     }
 
