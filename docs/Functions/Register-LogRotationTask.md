@@ -13,8 +13,8 @@ Short description
 ## SYNTAX
 
 ```
-Register-LogRotationTask [-Path] <String[]> [[-CompressDays] <Int32>] [-StartTime <String>] [-Include <String>]
- [-Exclude <String>] [<CommonParameters>]
+Register-LogRotationTask [-Name] <String> [-Path] <String[]> [[-KeepRaw] <Int32>] [-StartTime <String>]
+ [-Include <String>] [-Exclude <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,11 +29,11 @@ An example
 
 ## PARAMETERS
 
-### -Path
-{{Fill Path Description}}
+### -Name
+Specifies the name of the scheduled task with ' - LogRotation' appended.
 
 ```yaml
-Type: String[]
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -44,23 +44,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CompressDays
-{{Fill CompressDays Description}}
+### -Path
+Specifies a path to one or more locations. 
+Invoke-LogRotation processes the log files in the specified locations.
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeepRaw
+Specifies the number of days to keep uncompressed log files. 
+If you do not specify this parameter, the cmdlet will retain 5 days.
 
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: CompressDays
 
 Required: False
-Position: 3
+Position: 4
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -StartTime
-{{Fill StartTime Description}}
+Specifies the start time for the scheduled task. 
+The default value is 10:00 PM.
 
 ```yaml
 Type: String
@@ -75,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -Include
-{{Fill Include Description}}
+Specifies a wildcard selection string of files to include.
 
 ```yaml
 Type: String
@@ -90,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -Exclude
-{{Fill Exclude Description}}
+Specifies a wildcard selection string of files to exclude.
 
 ```yaml
 Type: String

@@ -13,8 +13,8 @@ Compresses log files by month.
 ## SYNTAX
 
 ```
-Invoke-LogRotation [-Path] <String[]> [[-CompressDays] <Int32>] [-Include <String>] [-Exclude <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-LogRotation [-Path] <String[]> [[-KeepRaw] <Int32>] [-Include <String>] [-Exclude <String>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,7 +32,7 @@ Archives the log files for the IIS 'Default Website' using the default 5 day ret
 
 ### EXAMPLE 2
 ```
-Invoke-LogRotation -Path C:\Inetpub\Logs\LogFiles\W3SVC1 -CompressDays 10
+Invoke-LogRotation -Path C:\Inetpub\Logs\LogFiles\W3SVC1 -KeepRaw 10
 ```
 
 Archives the log files for the IIS 'Default Website' using the specified 10 day retention
@@ -55,14 +55,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CompressDays
+### -KeepRaw
 Specifies the number of days to keep uncompressed log files. 
 If you do not specify this parameter, the cmdlet will retain 5 days.
 
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: CompressDays
 
 Required: False
 Position: 3
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 ```
 
 ### -Include
-{{Fill Include Description}}
+Specifies a wildcard selection string of files to include.
 
 ```yaml
 Type: String
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 ```
 
 ### -Exclude
-{{Fill Exclude Description}}
+Specifies a wildcard selection string of files to exclude.
 
 ```yaml
 Type: String
