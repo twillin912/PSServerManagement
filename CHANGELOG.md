@@ -1,11 +1,23 @@
 # ServerManagementTools Release History
 
+## v0.5 (2018-04-24)
+
+- New Functions
+
+  - The `Get-LinuxCdpInfo` cmdlet queries a Linux server for CDP information by capturing the network packets using tcpdump.
+  - The `Install-DiskCleanupTool` cmdlet copies the Disk Cleanup executable and supporting files from the WinSxS folder the to correct installed location and creates the shortcut.
+
+- Updates
+
+  - Invoke-LogRotation: Refactored the parameter name 'CompressDays' to 'KeepRaw'
+  - Register-LogRotationTask: Refactored the parameter name 'CompressDays' to 'KeepRaw'
+
+
 ## v0.4 (2017-04-05)
 
 - New Functions
 
   - The `Disable-SChannelFeature` cmdlet disables features in the SChannel security suite on Windows computers.  This cmdlet can be used to disable ciphers, key exchanges, and protocols that are consider insecure.
-
   - The `Get-RDSession` cmdlet uses the Cassia.dll to query local or remote computers for active and disconnection Remote Desktop sessions.
 
 - Updates
