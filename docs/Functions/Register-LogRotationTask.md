@@ -5,39 +5,44 @@ online version: http://servermanagementtools.readthedocs.io/en/stable/functions/
 schema: 2.0.0
 ---
 
-# Invoke-LogRotation
+# Register-LogRotationTask
 
 ## SYNOPSIS
-Compresses log files by month.
+Short description
 
 ## SYNTAX
 
 ```
-Invoke-LogRotation [-Path] <String[]> [[-KeepRaw] <Int32>] [-Include <String>] [-Exclude <String>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Register-LogRotationTask [-Name] <String> [-Path] <String[]> [[-KeepRaw] <Int32>] [-StartTime <String>]
+ [-Include <String>] [-Exclude <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Invoke-LogRotation cmdlet retrieves a list of log file in the specified locations and compressed them into a ZIP archive by month. 
-Once the contents of the archive are verified the original log files are deleted.
+Long description
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Invoke-LogRotation -Path C:\Inetpub\Logs\LogFiles\W3SVC1
+An example
 ```
-
-Archives the log files for the IIS 'Default Website' using the default 5 day retention
-
-### EXAMPLE 2
-```
-Invoke-LogRotation -Path C:\Inetpub\Logs\LogFiles\W3SVC1 -KeepRaw 10
-```
-
-Archives the log files for the IIS 'Default Website' using the specified 10 day retention
 
 ## PARAMETERS
+
+### -Name
+Specifies the name of the scheduled task with ' - LogRotation' appended.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Path
 Specifies a path to one or more locations. 
@@ -49,7 +54,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 2
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -65,8 +70,24 @@ Parameter Sets: (All)
 Aliases: CompressDays
 
 Required: False
-Position: 3
-Default value: 5
+Position: 4
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StartTime
+Specifies the start time for the scheduled task. 
+The default value is 10:00 PM.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: 22:00
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -81,7 +102,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: *.log
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -101,37 +122,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -140,10 +130,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
-Author: Trent Willingham
-Check out my other projects on GitHub https://github.com/twillin912
+General notes
 
 ## RELATED LINKS
-
-[http://servermanagementtools.readthedocs.io/en/stable/functions/Invoke-LogRotation](http://servermanagementtools.readthedocs.io/en/stable/functions/Invoke-LogRotation)
-

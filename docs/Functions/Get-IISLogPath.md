@@ -1,5 +1,6 @@
 ---
 external help file: ServerManagementTools-help.xml
+Module Name: ServerManagementTools
 online version: http://servermanagementtools.readthedocs.io/en/stable/functions/Get-IISLogPath
 schema: 2.0.0
 ---
@@ -20,28 +21,28 @@ The Get-IISLogPath cmdlet retrieves the log file path for one or more websites c
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### EXAMPLE 1
 ```
 Get-IISLogPath
 ```
 
 Returns log path information for all sites
 
-### -------------------------- EXAMPLE 2 --------------------------
+### EXAMPLE 2
 ```
 Get-IISLogPath -Name 'Default Web Site'
 ```
 
 Returns log path information for the 'Default Web Site'
 
-### -------------------------- EXAMPLE 3 --------------------------
+### EXAMPLE 3
 ```
 Get-IISLogPath -Name 'Admin*'
 ```
 
 Returns log path information for all sites whose Name begin with 'Admin'
 
-### -------------------------- EXAMPLE 4 --------------------------
+### EXAMPLE 4
 ```
 Get-IISLogPath -Name @('MySite1','MySite2')
 ```
@@ -58,7 +59,7 @@ If you do not specify this parameter, the cmdlet will return all configured site
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1

@@ -55,7 +55,7 @@ Describe 'Module manifest' {
     }
 
     Context 'Versioning' {
-        $script:ManifestVersion = New-Object -TypeName Version -ArgumentList $script:Manifest.Version.Major, $script:Manifest.Version.Minor, $script:Manifest.Version.Build
+        $script:ManifestVersion = New-Object -TypeName Version -ArgumentList $script:Manifest.Version.Major, $script:Manifest.Version.Minor
 
         if ( $UseAppVeyor ) {
             $script:AppVeyorVersion = $null
@@ -79,7 +79,7 @@ Describe 'Module manifest' {
         $script:ChangeLogVersion = $null
         It "has a valid version in the change log" {
             foreach ($line in (Get-Content $ChangeLogPath)) {
-                if ($line -match "^## (?<Version>(\d+\.){1,3}\d+)") {
+                if ($line -match "^## v(?<Version>(\d+\.){1,3}\d+)") {
                     $script:ChangeLogVersion = $matches.Version
                     break
                 }
@@ -91,7 +91,7 @@ Describe 'Module manifest' {
         $script:ReleaseNotesVersion = $null
         It "has a valid version in the release notes" {
             foreach ($line in (Get-Content $ReleaseNotesPath)) {
-                if ($line -match "(?<Version>(\d+\.){1,3}\d+)$") {
+                if ($line -match "v(?<Version>(\d+\.){1,3}\d+)$") {
                     $script:ReleaseNotesVersion = $matches.Version
                     break
                 }

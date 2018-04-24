@@ -5,7 +5,7 @@
 !.vscode/launch.json
 
 # Folder config file
-Desktop.ini
+[Dd]esktop.ini
 
 # Artifacts temp dir.
 [Aa]rtifacts/

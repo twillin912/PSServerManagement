@@ -1,5 +1,6 @@
 ---
 external help file: ServerManagementTools-help.xml
+Module Name: ServerManagementTools
 online version: http://servermanagementtools.readthedocs.io/en/stable/functions/Get-DfsrBacklogStatus
 schema: 2.0.0
 ---
@@ -25,14 +26,14 @@ A backlog indicates latency, and a backlog may be expected in your environment, 
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### EXAMPLE 1
 ```
 Get-DfsrBacklogStatus -ComputerName 'MyServer'
 ```
 
 Retrieves all configured replicated folders and their inbound backlog from each partner.
 
-### -------------------------- EXAMPLE 2 --------------------------
+### EXAMPLE 2
 ```
 Get-DfsrBacklogStatus -ComputerName 'MyServer' -FolderName 'Folder01'
 ```
@@ -48,7 +49,7 @@ A source computer is also called an outbound or upstream computer.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -65,7 +66,7 @@ You can specify multiple folders, separated by commas.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2

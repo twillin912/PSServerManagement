@@ -3,6 +3,7 @@ $SuppressImportModule = $false
 . $PSScriptRoot/../Shared.ps1
 
 InModuleScope -ModuleName 'ServerManagementTools' {
+    function Get-Website {}
     Describe 'Get-IISLogPath' {
         $Website1 = [PSCustomObject]@{Id=1;Name='Default Web Site';logfile=[PSCustomObject]@{directory='%SystemDrive%\inetpub\Logs\Logfiles'}
         }
@@ -12,7 +13,7 @@ InModuleScope -ModuleName 'ServerManagementTools' {
         }
         $AllSites = @( $Website1, $Website2, $Website3 )
 
-        Mock -CommandName Get-Website { $AllSites }
+        Mock -CommandName 'Get-Website' -MockWith { return $AllSites }
 
         Context 'Mock unit tests' {
 
@@ -36,13 +37,13 @@ InModuleScope -ModuleName 'ServerManagementTools' {
         Context 'Integration test' {
             It 'Without Name parameter, return all configured sites' {
                 $Return = Get-IISLogPath
-                ($Return | GM).TypeName | Should Match 'ServerManagementTools.IISLogPath'
+                ($Return | Get-Member).TypeName | Should Match 'ServerManagementTools.IISLogPath'
                 $Return.Collection.Count | Should Be 3
             }
 
             It 'With valid Name parameter, returns only that site' {
                 $Return = Get-IISLogPath -Name 'MyAdminSite'
-                ($Return | GM).TypeName | Should Match 'ServerManagementTools.IISLogPath'
+                ($Return | Get-Member).TypeName | Should Match 'ServerManagementTools.IISLogPath'
                 $Return.Collection | Should BeNullOrEmpty
                 $Return | Should Not BeNullOrEmpty
             }
@@ -54,13 +55,13 @@ InModuleScope -ModuleName 'ServerManagementTools' {
 
             It 'Supports wildcard in Name parameter' {
                 $Return = Get-IISLogPath -Name 'My*'
-                ($Return | GM).TypeName | Should Match 'ServerManagementTools.IISLogPath'
+                ($Return | Get-Member).TypeName | Should Match 'ServerManagementTools.IISLogPath'
                 $Return.Collection.Count | Should Be 2
             }
 
             It 'Supports array in Name parameter' {
                 $Return = Get-IISLogPath -Name @('MyAdminSite','MySite')
-                ($Return | GM).TypeName | Should Match 'ServerManagementTools.IISLogPath'
+                ($Return | Get-Member).TypeName | Should Match 'ServerManagementTools.IISLogPath'
                 $Return.Collection.Count | Should Be 2
             }
 

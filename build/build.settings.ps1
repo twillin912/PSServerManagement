@@ -1,5 +1,5 @@
 Param(
-    [Parameter(Mandatory=$true)]
+    [Parameter(Mandatory = $true)]
     [string] $ProjectRoot
 )
 
@@ -27,7 +27,7 @@ $UseAppVeyor = $false
 
 $Version = (Test-ModuleManifest -Path "$env:BHPSModuleManifest").Version
 [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
-$ModuleVersion = New-Object -TypeName Version -ArgumentList $Version.Major, $Version.Minor, $Version.Build, ($Version.Revision + 1)
+$ModuleVersion = New-Object -TypeName Version -ArgumentList $Version.Major, $Version.Minor, $Version.Build
 
 ###############################################################################
 # Before/After Hooks for the Core Task: Clean
