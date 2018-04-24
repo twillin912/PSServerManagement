@@ -1,3 +1,4 @@
+#Requires -Version 3.0
 function Get-DfsrBacklogStatus {
     <#
     .SYNOPSIS
@@ -24,26 +25,26 @@ function Get-DfsrBacklogStatus {
         Check out my other projects on GitHub https://github.com/twillin912
     #>
     [CmdletBinding()]
-    [OutputType([PSObject])]
+    [OutputType([psobject])]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWMICmdlet", "", Scope = "Function", Target = "*")]
-    Param
+    param
     (
         # Specifies the name of the sending computer. A source computer is also called an outbound or upstream computer.
         [Parameter()]
-        [string[]] $ComputerName = "localhost",
+        [string[]]$ComputerName = "localhost",
 
         # Specifies an array of names of replicated folders. If you do not specify this parameter, the cmdlet queries for all participating replicated folders. You can specify multiple folders, separated by commas.
         [Parameter()]
-        [string[]] $FolderName
+        [string[]]$FolderName
     )
 
-    Begin {
+    begin {
         $Output = @()
     }
 
-    Process {
-        foreach ( $Computer in $ComputerName ) {
-            if ( ! ( Test-Connection -ComputerName $Computer -Count 1 -Quiet ) ) {
+    process {
+        foreach ($Computer in $ComputerName) {
+            if (!(Test-Connection -ComputerName $Computer -Count 1 -Quiet)) {
                 Write-Error -Message ($LocalizedData.ComputerOffline -f $Computer)
                 continue
             }
@@ -58,15 +59,15 @@ function Get-DfsrBacklogStatus {
                 $DfsrConnInfo = Get-WmiObject -ComputerName $Computer -Namespace 'root\MicrosoftDFS' -Class 'DfsrConnectionInfo'
                 $DfsrFolderInfo = Get-WmiObject -ComputerName $Computer -Namespace 'root\MicrosoftDFS' -Class 'DfsrReplicatedFolderInfo'
             }
-            if ( -not ( $DfsrConnInfo -and $DfsrFolderInfo ) ) {
+            if (-not ($DfsrConnInfo -and $DfsrFolderInfo)) {
                 Write-Error -Message ($LocalizedData.WMIFailed -f $Computer)
             }
 
-            if ( $FolderName ) {
+            if ($FolderName) {
                 $DfsrFolderInfo = $DfsrFolderInfo | Where-Object { $PSItem.ReplicatedFolderName -in $FolderName }
             }
 
-            foreach ( $Folder in $DfsrFolderInfo ) {
+            foreach ($Folder in $DfsrFolderInfo) {
 
                 $FolderValues = @{
                     'FolderName' = $Folder.ReplicatedFolderName
@@ -74,7 +75,7 @@ function Get-DfsrBacklogStatus {
                     'State'      = $Folder.State
                 }
 
-                if ( $WmiFailback ) {
+                if ($WmiFailback) {
                     $VersionVector = (Invoke-WmiMethod -InputObject $Folder -Name 'GetVersionVector').VersionVector
                 }
                 else {
@@ -83,7 +84,7 @@ function Get-DfsrBacklogStatus {
 
 
                 $InboundPartner = $DfsrConnInfo | Where-Object { $PSItem.ReplicationGroupGUID -eq $Folder.ReplicationGroupGUID -and $PSItem.Inbound -eq $true }
-                foreach ( $Partner in $InboundPartner ) {
+                foreach ($Partner in $InboundPartner) {
                     try {
                         $ParterFolderInfo = Get-CimInstance -ComputerName $Partner.PartnerName -Namespace 'root\MicrosoftDFS' -ClassName 'DfsrReplicatedFolderInfo' -ErrorAction Stop
                         $PartnerFolder = $ParterFolderInfo | Where-Object { $PSItem.ReplicatedFolderGuid -eq $Folder.ReplicatedFolderGuid }

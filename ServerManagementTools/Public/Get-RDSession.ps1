@@ -22,23 +22,23 @@ function Get-RDSession {
     [CmdletBinding()]
     [OutputType('Cassia.Impl.TerminalServicesSession')]
 
-    param (
+    param(
         [Parameter(
-            ValueFromPipelineByPropertyName=$true
+            ValueFromPipelineByPropertyName = $true
         )]
-        [Alias('DSNHostName','Name','Computer')]
-        [string] $ComputerName='localhost',
+        [Alias('DSNHostName', 'Name', 'Computer')]
+        [string]$ComputerName = 'localhost',
 
         [Parameter()]
-        [ValidateSet('Active','Connected','ConnectQuery','Disconnected','Down','Idle','Initializing','Listening','Reset','Shadowing')]
+        [ValidateSet('Active', 'Connected', 'ConnectQuery', 'Disconnected', 'Down', 'Idle', 'Initializing', 'Listening', 'Reset', 'Shadowing')]
         [Alias('ConnectionState')]
-        [string] $State='*',
+        [string]$State = '*',
 
         [Parameter()]
-        [string] $ClientName='*',
+        [string]$ClientName = '*',
 
         [Parameter()]
-        [string] $UserName='*'
+        [string]$UserName = '*'
     )
 
     begin {
@@ -66,9 +66,9 @@ function Get-RDSession {
 
             $Session = $TSRemoteServer.GetSessions()
             if ($Session) {
-                $Session | Where-Object {$_.ConnectionState -like $State -and $_.UserName -like $UserName -and $_.ClientName -like $ClientName} |
-                Add-Member -MemberType AliasProperty -Name IPAddress -Value ClientIPAddress -PassThru |
-                Add-Member -MemberType AliasProperty State -Value ConnectionState -PassThru
+                $Session | Where-Object { $_.ConnectionState -like $State -and $_.UserName -like $UserName -and $_.ClientName -like $ClientName } |
+                    Add-Member -MemberType AliasProperty -Name IPAddress -Value ClientIPAddress -PassThru |
+                    Add-Member -MemberType AliasProperty State -Value ConnectionState -PassThru
             }
         }
         catch {
@@ -80,5 +80,5 @@ function Get-RDSession {
         }
     }
 
-    end { }
+    end {}
 }
