@@ -74,9 +74,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### ComputerName as String or Array of strings
+
 ## OUTPUTS
 
 ### None
+
 ## NOTES
 Author: Trent Willingham
 Check out my other projects on GitHub https://github.com/twillin912

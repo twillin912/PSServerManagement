@@ -174,9 +174,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+
 ## OUTPUTS
 
 ### None
+
 ## NOTES
 Author: Trent Willingham
 Check out my other projects on GitHub https://github.com/twillin912

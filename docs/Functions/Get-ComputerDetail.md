@@ -5,21 +5,15 @@ online version: http://servermanagementtools.readthedocs.io/en/latest/functions/
 schema: 2.0.0
 ---
 
-# Get-ComputerSerialNumber
+# Get-ComputerDetail
 
 ## SYNOPSIS
 {{Fill in the Synopsis}}
 
 ## SYNTAX
 
-### Default (Default)
 ```
-Get-ComputerSerialNumber [-ComputerName] <String[]> [[-Credentials] <PSCredential>] [<CommonParameters>]
-```
-
-### Linux
-```
-Get-ComputerSerialNumber [-ComputerName] <String[]> [-Credentials] <PSCredential> [-Linux] [<CommonParameters>]
+Get-ComputerDetail [[-ComputerName] <String[]>] [[-Credential] <PSCredential>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,51 +38,24 @@ Type: String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Credentials
-{{Fill Credentials Description}}
+### -Credential
+{{Fill Credential Description}}
 
 ```yaml
 Type: PSCredential
-Parameter Sets: Default
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: 1
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: PSCredential
-Parameter Sets: Linux
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Linux
-{{Fill Linux Description}}
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: Linux
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -99,9 +66,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
+
 ## OUTPUTS
 
 ### System.Object
+
 ## NOTES
 
 ## RELATED LINKS
