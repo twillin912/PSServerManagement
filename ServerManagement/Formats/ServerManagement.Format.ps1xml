@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Configuration>
+    <SelectionSets>
+        <SelectionSet>
+            <Name>NewTypes</Name>
+            <Types>
+                <TypeName>ServerManagementTools.ComputerInfo</TypeName>
+            </Types>
+        </SelectionSet>
+    </SelectionSets>
     <ViewDefinitions>
         <View>
             <Name>IISLogPathTable</Name>
@@ -82,6 +90,70 @@
             </TableControl>
         </View>
         <View>
+            <Name>ComputerDetail</Name>
+            <ViewSelectedBy>
+                <TypeName>ServerManagementTools.ComputerDetail</TypeName>
+            </ViewSelectedBy>
+            <TableControl>
+                <TableHeaders>
+                    <TableColumnHeader>
+                        <Width>15</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Width>18</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Width>15</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Width>12</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Width>10</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Width>10</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Label>Memory</Label>
+                        <Width>10</Width>
+                    </TableColumnHeader>
+                </TableHeaders>
+                <TableRowEntries>
+                    <TableRowEntry>
+                        <TableColumnItems>
+                            <TableColumnItem>
+                                <PropertyName>ComputerName</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>Model</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>SerialNumber</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>CpuSockets</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>CpuCores</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>Dimms</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <ScriptBlock>
+                                    $size = $_.Memory
+                                    $postfixes = @( "B", "KB", "MB", "GB", "TB", "PB" )
+                                    for ($i=0; $size -ge 1024 -and $i -lt $postfixes.Length - 1; $i++) { $size = $size / 1024; }
+                                    "" + [System.Math]::Round($size,2) + " " + $postfixes[$i];
+                                </ScriptBlock>
+                            </TableColumnItem>
+                        </TableColumnItems>
+                    </TableRowEntry>
+                </TableRowEntries>
+            </TableControl>
+        </View>
+        <View>
             <Name>RasConnectionHistory</Name>
             <ViewSelectedBy>
                 <TypeName>ServerManagementTools.RasConnectionHistory</TypeName>
@@ -100,8 +172,7 @@
                     <TableColumnHeader>
                         <Width>25</Width>
                     </TableColumnHeader>
-                    <TableColumnHeader>
-                    </TableColumnHeader>
+                    <TableColumnHeader></TableColumnHeader>
                     <TableColumnHeader>
                         <Width>10</Width>
                     </TableColumnHeader>

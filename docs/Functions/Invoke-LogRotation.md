@@ -1,6 +1,6 @@
 ---
-external help file: ServerManagementTools-help.xml
-Module Name: ServerManagementTools
+external help file: ServerManagement-help.xml
+Module Name: ServerManagement
 online version: http://servermanagementtools.readthedocs.io/en/stable/functions/Invoke-LogRotation
 schema: 2.0.0
 ---
