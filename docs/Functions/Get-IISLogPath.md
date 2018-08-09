@@ -76,6 +76,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### System.Management.Automation.PSObject
+
 ## NOTES
 Author: Trent Willingham
 Check out my other scripts and projects @ https://github.com/twillin912
