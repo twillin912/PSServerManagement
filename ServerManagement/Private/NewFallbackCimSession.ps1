@@ -30,7 +30,7 @@ function NewFallbackCimSession {
                 Write-Output -InputObject $CimSession
             }
             catch {
-                throw "Unable to connect to '$Computer' using the WSMAN protocol"
+                throw "Could not create remote CIM connection to '$ComputerName' using WSMAN protocol."
             }
         }
         else {
@@ -41,7 +41,7 @@ function NewFallbackCimSession {
                 Write-Output -InputObject $CimSession
             }
             catch {
-                throw "Unable to connect to '$ComputerName' using the WSMAN or DCOM protocol."
+                throw "Could not create remote CIM connection to '$ComputerName' using DCOM protocol."
             }
         }
     }

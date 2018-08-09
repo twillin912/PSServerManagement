@@ -3,7 +3,7 @@
 ###############################################################################
 # Dot source the user's customized properties and extension tasks.
 ###############################################################################
-. $env:BHProjectPath\Build\build.settings.ps1 -ProjectRoot $env:BHProjectPath
+. $env:BHProjectPath\build\build.settings.ps1 -ProjectRoot $env:BHProjectPath
 . $env:BHProjectPath\module.settings.ps1
 
 Set-StrictMode -Version Latest
@@ -72,7 +72,7 @@ Add-BuildTask Build {
     }
     if ($Formats) {
         $ManifestParams.Add('FormatsToProcess',
-            ($Formats | ForEach-Object {"Formats/$_"})
+            ($Formats | ForEach-Object {"Formats/$($_.Name)"})
         )
     }
 
@@ -90,7 +90,9 @@ Add-BuildTask Build {
     }
 
     Update-ModuleManifest -Path "$env:BHPSModuleManifest" @ManifestParams
-
+    $ManifestContent = Get-Content -Path "$env:BHPSModuleManifest"
+    $ManifestContent = $ManifestContent | ForEach-Object { $_.TrimEnd() }
+    Set-Content -Path "$env:BHPSModuleManifest" -Value $ManifestContent
 
 }
 

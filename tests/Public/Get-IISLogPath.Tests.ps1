@@ -2,7 +2,7 @@
 $SuppressImportModule = $false
 . $PSScriptRoot/../Shared.ps1
 
-InModuleScope -ModuleName 'ServerManagementTools' {
+InModuleScope -ModuleName $env:BHProjectName {
     function Get-Website {}
     Describe 'Get-IISLogPath' {
         $Website1 = [PSCustomObject]@{Id=1;Name='Default Web Site';logfile=[PSCustomObject]@{directory='%SystemDrive%\inetpub\Logs\Logfiles'}

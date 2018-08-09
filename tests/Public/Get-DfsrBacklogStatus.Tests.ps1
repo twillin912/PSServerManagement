@@ -2,7 +2,7 @@
 $SuppressImportModule = $false
 . $PSScriptRoot/../Shared.ps1
 
-InModuleScope -ModuleName 'ServerManagementTools' {
+InModuleScope -ModuleName $env:BHProjectName {
     Describe 'Get-DfsrBacklogStatus Function' {
         function Invoke-CimMethod {
             [CmdletBinding()]
