@@ -4,7 +4,7 @@ $SuppressImportModule = $true
 
 $AppVeyorPath = Join-Path -Path $ProjectRoot -Child "appveyor.yml"
 $ChangeLogPath = Join-Path -Path $ProjectRoot -Child "CHANGELOG.md"
-$ReleaseNotesPath = Join-Path -Path $ProjectRoot -Child "RELEASENOTES.md"
+$ReleaseNotesPath = Join-Path -Path $ProjectRoot -Child "ReleaseNotes.md"
 
 Describe 'Module manifest' {
     Context 'Validation' {

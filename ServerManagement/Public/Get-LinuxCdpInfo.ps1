@@ -40,7 +40,7 @@ function Get-LinuxCdpInfo {
             }
             $InterfacesFromTcpdump = @()
             try {
-                $SshSession = New-SSHSession -ComputerName $ComputerName -Credential $Credential -AcceptKey
+                $SshSession = New-SSHSession -ComputerName $ComputerName -Credential $Credential -AcceptKey -Force
 
                 $Result = Invoke-SSHCommand -SSHSession $SshSession -Command 'tcpdump -D'
                 foreach ($Line in $Result.Output) {

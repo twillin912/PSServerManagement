@@ -1,6 +1,6 @@
 ---
-external help file: ServerManagementTools-help.xml
-Module Name: ServerManagementTools
+external help file: ServerManagement-help.xml
+Module Name: ServerManagement
 online version: http://servermanagementtools.readthedocs.io/en/stable/functions/Install-DiskCleanupTool
 schema: 2.0.0
 ---
@@ -74,11 +74,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### ComputerName as String or Array of strings
-
 ## OUTPUTS
 
 ### None
-
 ## NOTES
 Author: Trent Willingham
 Check out my other projects on GitHub https://github.com/twillin912
