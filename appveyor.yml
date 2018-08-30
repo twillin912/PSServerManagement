@@ -11,6 +11,7 @@ branches:
 
 skip_commits:
   files:
+    - mkdocs.yml
     - '**/*.md'
 
 #Publish to PowerShell Gallery with this key

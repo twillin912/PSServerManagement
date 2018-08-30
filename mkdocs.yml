@@ -1,6 +1,8 @@
 site_name: ServerManagement Documentation
 repo_url: https://github.com/twillin912/PSServerManagement
-theme: material
+theme:
+  name: material
+  highlightjs: true
 pages:
   - Home: index.md
   - ServerManagement Basics:
