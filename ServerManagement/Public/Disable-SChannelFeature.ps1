@@ -12,7 +12,7 @@ function Disable-SChannelFeature {
     .OUTPUTS
         None
     .LINK
-        http://servermanagementtools.readthedocs.io/en/latest/functions/Disable-SChannelFeature
+        http://psservermanagement.readthedocs.io/en/latest/functions/Disable-SChannelFeature
     .NOTES
         Author: Trent Willingham
         Check out my other projects on GitHub https://github.com/twillin912

@@ -4,7 +4,7 @@
         <View>
             <Name>DfsrBacklogStatus</Name>
             <ViewSelectedBy>
-                <TypeName>ServerManagementTools.DFS.BacklogStatus</TypeName>
+                <TypeName>ServerManagement.DFS.BacklogStatus</TypeName>
             </ViewSelectedBy>
             <TableControl>
                 <TableHeaders>

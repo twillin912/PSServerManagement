@@ -15,7 +15,7 @@ function Install-DiskCleanupTool {
     .OUTPUTS
         None
     .LINK
-        http://servermanagementtools.readthedocs.io/en/stable/functions/Install-DiskCleanupTool
+        http://psservermanagement.readthedocs.io/en/latest/functions/Install-DiskCleanupTool
     .NOTES
         Author: Trent Willingham
         Check out my other projects on GitHub https://github.com/twillin912

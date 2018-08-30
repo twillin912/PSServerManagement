@@ -18,7 +18,7 @@ function Get-DfsrBacklogStatus {
         Retrieves the replicated folder 'Folder01' and its inbound backlog from each partner.
 
     .LINK
-        http://servermanagementtools.readthedocs.io/en/stable/functions/Get-DfsrBacklogStatus
+        http://psservermanagement.readthedocs.io/en/latest/functions/Get-DfsrBacklogStatus
 
     .NOTES
         Author: Trent Willingham
@@ -101,7 +101,7 @@ function Get-DfsrBacklogStatus {
                         $OutputValues.Add('PartnerName', $Partner.PartnerName)
                         $OutputValues.Add('Backlog', $Backlog.BacklogFileCount)
                         $OutputObject = New-Object -TypeName PSObject -Property $OutputValues
-                        $OutputObject.PSObject.TypeNames.Insert(0, 'ServerManagementTools.DFS.BacklogStatus')
+                        $OutputObject.PSObject.TypeNames.Insert(0, 'ServerManagement.DFS.BacklogStatus')
                         $Output += $OutputObject
                     }
                 } #foreach Partner

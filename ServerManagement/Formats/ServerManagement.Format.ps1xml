@@ -4,7 +4,7 @@
         <SelectionSet>
             <Name>NewTypes</Name>
             <Types>
-                <TypeName>ServerManagementTools.ComputerInfo</TypeName>
+                <TypeName>ServerManagement.ComputerInfo</TypeName>
             </Types>
         </SelectionSet>
     </SelectionSets>
@@ -12,7 +12,7 @@
         <View>
             <Name>IISLogPathTable</Name>
             <ViewSelectedBy>
-                <TypeName>ServerManagementTools.IISLogPath</TypeName>
+                <TypeName>ServerManagement.IISLogPath</TypeName>
             </ViewSelectedBy>
             <TableControl>
                 <TableHeaders>
@@ -46,7 +46,7 @@
         <View>
             <Name>CdpInfoTable</Name>
             <ViewSelectedBy>
-                <TypeName>ServerManagementTools.CdpInfo</TypeName>
+                <TypeName>ServerManagement.CdpInfo</TypeName>
             </ViewSelectedBy>
             <TableControl>
                 <TableHeaders>
@@ -92,7 +92,7 @@
         <View>
             <Name>ComputerDetail</Name>
             <ViewSelectedBy>
-                <TypeName>ServerManagementTools.ComputerDetail</TypeName>
+                <TypeName>ServerManagement.ComputerDetail</TypeName>
             </ViewSelectedBy>
             <TableControl>
                 <TableHeaders>
@@ -156,7 +156,7 @@
         <View>
             <Name>RasConnectionHistory</Name>
             <ViewSelectedBy>
-                <TypeName>ServerManagementTools.RasConnectionHistory</TypeName>
+                <TypeName>ServerManagement.RasConnectionHistory</TypeName>
             </ViewSelectedBy>
             <TableControl>
                 <TableHeaders>

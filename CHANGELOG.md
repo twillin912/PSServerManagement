@@ -1,4 +1,4 @@
-# ServerManagementTools Release History
+# ServerManagement Release History
 
 ## v0.5 (2018-04-24)
 
