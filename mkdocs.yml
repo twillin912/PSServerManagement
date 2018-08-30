@@ -1,7 +1,7 @@
 site_name: ServerManagement Documentation
 repo_url: https://github.com/twillin912/PSServerManagement
 theme:
-  name: material
+  name: mkdocs
   highlightjs: true
 pages:
   - Home: index.md
