@@ -54,7 +54,7 @@ function Get-IISLogPath {
                 Name    = $Site.Name
                 LogPath = $LogPath
             }
-            $Object.PSObject.TypeNames.Insert(0, 'ServerManagementTools.IISLogPath')
+            $Object.PSObject.TypeNames.Insert(0, 'ServerManagement.IISLogPath')
             Write-Output -InputObject $Object
         }
     }

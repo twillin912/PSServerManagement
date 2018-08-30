@@ -1,4 +1,4 @@
-# What is new in ServerManagementTools v0.5
+# What is new in ServerManagement v0.5
 
 ## New Functions
 

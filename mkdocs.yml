@@ -3,7 +3,7 @@ repo_url: https://github.com/twillin912/PSServerManagement
 theme: readthedocs
 pages:
   - Home: index.md
-  - ServerManagementTools Basics:
+  - ServerManagement Basics:
     - Quick Start: quickstart.md
   - Functions:
     - Disable-SChannelFeature: Functions/Disable-SChannelFeature.md

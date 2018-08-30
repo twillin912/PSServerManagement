@@ -101,7 +101,7 @@ function Get-DfsrBacklogStatus {
                         $OutputValues.Add('PartnerName', $Partner.PartnerName)
                         $OutputValues.Add('Backlog', $Backlog.BacklogFileCount)
                         $OutputObject = New-Object -TypeName PSObject -Property $OutputValues
-                        $OutputObject.PSObject.TypeNames.Insert(0, 'ServerManagementTools.DFS.BacklogStatus')
+                        $OutputObject.PSObject.TypeNames.Insert(0, 'ServerManagement.DFS.BacklogStatus')
                         $Output += $OutputObject
                     }
                 } #foreach Partner

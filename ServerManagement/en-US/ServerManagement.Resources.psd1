@@ -1,4 +1,4 @@
-# Localized ServerManagementTools.Resources.psd1
+# Localized ServerManagement.Resources.psd1
 
 ConvertFrom-StringData @'
     CIMFailed               = Cannot bind to CIM instance on '{0}'.
