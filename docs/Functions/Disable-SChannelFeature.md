@@ -1,7 +1,7 @@
 ---
 external help file: ServerManagement-help.xml
 Module Name: ServerManagement
-online version: http://servermanagementtools.readthedocs.io/en/latest/functions/Disable-SChannelFeature
+online version: http://psservermanagement.readthedocs.io/en/latest/functions/Disable-SChannelFeature
 schema: 2.0.0
 ---
 
@@ -185,5 +185,5 @@ Check out my other projects on GitHub https://github.com/twillin912
 
 ## RELATED LINKS
 
-[http://servermanagementtools.readthedocs.io/en/latest/functions/Disable-SChannelFeature](http://servermanagementtools.readthedocs.io/en/latest/functions/Disable-SChannelFeature)
+[http://psservermanagement.readthedocs.io/en/latest/functions/Disable-SChannelFeature](http://psservermanagement.readthedocs.io/en/latest/functions/Disable-SChannelFeature)
 

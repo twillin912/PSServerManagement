@@ -1,7 +1,7 @@
 ---
 external help file: ServerManagement-help.xml
 Module Name: ServerManagement
-online version: http://servermanagementtools.readthedocs.io/en/stable/functions/Install-DiskCleanupTool
+online version: http://psservermanagement.readthedocs.io/en/latest/functions/Install-DiskCleanupTool
 schema: 2.0.0
 ---
 
@@ -85,5 +85,5 @@ Check out my other projects on GitHub https://github.com/twillin912
 
 ## RELATED LINKS
 
-[http://servermanagementtools.readthedocs.io/en/stable/functions/Install-DiskCleanupTool](http://servermanagementtools.readthedocs.io/en/stable/functions/Install-DiskCleanupTool)
+[http://psservermanagement.readthedocs.io/en/latest/functions/Install-DiskCleanupTool](http://psservermanagement.readthedocs.io/en/latest/functions/Install-DiskCleanupTool)
 

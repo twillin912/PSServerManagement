@@ -37,13 +37,13 @@ InModuleScope -ModuleName $env:BHProjectName {
         Context 'Integration test' {
             It 'Without Name parameter, return all configured sites' {
                 $Return = Get-IISLogPath
-                ($Return | Get-Member).TypeName | Should Match 'ServerManagementTools.IISLogPath'
+                ($Return | Get-Member).TypeName | Should Match 'ServerManagement.IISLogPath'
                 $Return.Collection.Count | Should Be 3
             }
 
             It 'With valid Name parameter, returns only that site' {
                 $Return = Get-IISLogPath -Name 'MyAdminSite'
-                ($Return | Get-Member).TypeName | Should Match 'ServerManagementTools.IISLogPath'
+                ($Return | Get-Member).TypeName | Should Match 'ServerManagement.IISLogPath'
                 $Return.Collection | Should BeNullOrEmpty
                 $Return | Should Not BeNullOrEmpty
             }
@@ -55,13 +55,13 @@ InModuleScope -ModuleName $env:BHProjectName {
 
             It 'Supports wildcard in Name parameter' {
                 $Return = Get-IISLogPath -Name 'My*'
-                ($Return | Get-Member).TypeName | Should Match 'ServerManagementTools.IISLogPath'
+                ($Return | Get-Member).TypeName | Should Match 'ServerManagement.IISLogPath'
                 $Return.Collection.Count | Should Be 2
             }
 
             It 'Supports array in Name parameter' {
                 $Return = Get-IISLogPath -Name @('MyAdminSite','MySite')
-                ($Return | Get-Member).TypeName | Should Match 'ServerManagementTools.IISLogPath'
+                ($Return | Get-Member).TypeName | Should Match 'ServerManagement.IISLogPath'
                 $Return.Collection.Count | Should Be 2
             }
 

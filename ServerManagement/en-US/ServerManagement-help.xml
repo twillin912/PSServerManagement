@@ -263,8 +263,8 @@
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>http://servermanagementtools.readthedocs.io/en/latest/functions/Disable-SChannelFeature</maml:linkText>
-        <maml:uri>http://servermanagementtools.readthedocs.io/en/latest/functions/Disable-SChannelFeature</maml:uri>
+        <maml:linkText>http://psservermanagement.readthedocs.io/en/latest/functions/Disable-SChannelFeature</maml:linkText>
+        <maml:uri>http://psservermanagement.readthedocs.io/en/latest/functions/Disable-SChannelFeature</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -372,7 +372,7 @@
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>http://servermanagementtools.readthedocs.io/en/latest/functions/Disable-SChannelFeature</maml:uri>
+        <maml:uri>http://psservermanagement.readthedocs.io/en/latest/functions/Disable-SChannelFeature</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -530,7 +530,7 @@
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>http://servermanagementtools.readthedocs.io/en/latest/functions/Disable-SChannelFeature</maml:uri>
+        <maml:uri>http://psservermanagement.readthedocs.io/en/latest/functions/Disable-SChannelFeature</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -636,8 +636,8 @@
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>http://servermanagementtools.readthedocs.io/en/stable/functions/Get-DfsrBacklogStatus</maml:linkText>
-        <maml:uri>http://servermanagementtools.readthedocs.io/en/stable/functions/Get-DfsrBacklogStatus</maml:uri>
+        <maml:linkText>http://psservermanagement.readthedocs.io/en/latest/functions/Get-DfsrBacklogStatus</maml:linkText>
+        <maml:uri>http://psservermanagement.readthedocs.io/en/latest/functions/Get-DfsrBacklogStatus</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -732,8 +732,8 @@
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>http://servermanagementtools.readthedocs.io/en/stable/functions/Get-IISLogPath</maml:linkText>
-        <maml:uri>http://servermanagementtools.readthedocs.io/en/stable/functions/Get-IISLogPath</maml:uri>
+        <maml:linkText>http://psservermanagement.readthedocs.io/en/latest/functions/Get-IISLogPath</maml:linkText>
+        <maml:uri>http://psservermanagement.readthedocs.io/en/latest/functions/Get-IISLogPath</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -889,7 +889,7 @@
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>http://servermanagementtools.readthedocs.io/en/stable/functions/Get-IISLogPath</maml:uri>
+        <maml:uri>http://psservermanagement.readthedocs.io/en/latest/functions/Get-IISLogPath</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -1042,8 +1042,8 @@
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>http://servermanagementtools.readthedocs.io/en/stable/functions/Get-RDSession</maml:linkText>
-        <maml:uri>http://servermanagementtools.readthedocs.io/en/stable/functions/Get-RDSession</maml:uri>
+        <maml:linkText>http://psservermanagement.readthedocs.io/en/latest/functions/Get-RDSession</maml:linkText>
+        <maml:uri>http://psservermanagement.readthedocs.io/en/latest/functions/Get-RDSession</maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>http://code.msdn.microsoft.com/PSTerminalServices</maml:linkText>
@@ -1165,8 +1165,8 @@
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>http://servermanagementtools.readthedocs.io/en/stable/functions/Install-DiskCleanupTool</maml:linkText>
-        <maml:uri>http://servermanagementtools.readthedocs.io/en/stable/functions/Install-DiskCleanupTool</maml:uri>
+        <maml:linkText>http://psservermanagement.readthedocs.io/en/latest/functions/Install-DiskCleanupTool</maml:linkText>
+        <maml:uri>http://psservermanagement.readthedocs.io/en/latest/functions/Install-DiskCleanupTool</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -1356,8 +1356,8 @@
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>http://servermanagementtools.readthedocs.io/en/stable/functions/Invoke-LogRotation</maml:linkText>
-        <maml:uri>http://servermanagementtools.readthedocs.io/en/stable/functions/Invoke-LogRotation</maml:uri>
+        <maml:linkText>http://psservermanagement.readthedocs.io/en/latest/functions/Invoke-LogRotation</maml:linkText>
+        <maml:uri>http://psservermanagement.readthedocs.io/en/latest/functions/Invoke-LogRotation</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -1543,7 +1543,7 @@
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>http://servermanagementtools.readthedocs.io/en/stable/functions/Invoke-LogRotation</maml:uri>
+        <maml:uri>http://psservermanagement.readthedocs.io/en/latest/functions/Invoke-LogRotation</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
