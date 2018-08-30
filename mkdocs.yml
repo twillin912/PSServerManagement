@@ -1,19 +1,5 @@
-site_name: ServerManagement Documentation
+site_name: ServerManagement PowerShell Module
 repo_url: https://github.com/twillin912/PSServerManagement
 theme:
-  name: mkdocs
+  name: material
   highlightjs: true
-pages:
-  - Home: index.md
-  - ServerManagement Basics:
-    - Quick Start: quickstart.md
-  - Functions:
-    - Disable-SChannelFeature: Functions/Disable-SChannelFeature.md
-    - Get-ComputerDetail: Functions/Get-ComputerDetail.md
-    - Get-ComputerSerialNumber: Functions/Get-ComputerSerialNumber.md
-    - Get-DfsrBacklogStatus: Functions/Get-DfsrBacklogStatus.md
-    - Get-IISLogPath: Functions/Get-IISLogPath.md
-    - Get-RDSession: Functions/Get-RDSession.md
-    - Install-DiskCleanupTool: Functions/Install-DiskCleanupTool.md
-    - Invoke-LogRotation: Functions/Invoke-LogRotation.md
-    - Register-LogRotationTask: Functions/Register-LogRotationTask.md
