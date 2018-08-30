@@ -1,5 +1,5 @@
-site_name: ServerManagementTools Documentation
-repo_url: https://github.com/twillin912/ServerManagementTools
+site_name: ServerManagement Documentation
+repo_url: https://github.com/twillin912/PSServerManagement
 theme: readthedocs
 pages:
   - Home: index.md
