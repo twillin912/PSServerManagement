@@ -1,5 +1,5 @@
 site_name: ServerManagement PowerShell Module
 repo_url: https://github.com/twillin912/PSServerManagement
 theme:
-  name: material
+  name: readthedocs
   highlightjs: true
