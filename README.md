@@ -1,6 +1,7 @@
 # ServerManagement PowerShell Module
 
-[![Build status](https://ci.appveyor.com/api/projects/status/github/twillin912/psservermanagement?branch=master&passingText=master%20-%20OK&svg=true)](https://ci.appveyor.com/project/twillin912/psservermanagement/branch/master)
+[![Build status](https://ci.appveyor.com/api/projects/status/stdm6vrj6i4ygtbn?svg=true)](https://ci.appveyor.com/project/twillin912/psservermanagement)
+
 [![Documentation Status](http://readthedocs.org/projects/psservermanagement/badge/?version=latest)](http://psservermanagement.readthedocs.io/en/latest/?badge=latest)
 
 Collection of PowerShell functions for managing Windows Server.

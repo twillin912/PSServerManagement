@@ -17,7 +17,7 @@ function Get-IISLogPath {
         Get-IISLogPath -Name @('MySite1','MySite2')
         Returns log path information for the sites 'MySite1' and 'MySite2'
     .LINK
-        http://servermanagementtools.readthedocs.io/en/stable/functions/Get-IISLogPath
+        http://psservermanagement.readthedocs.io/en/latest/functions/Get-IISLogPath
     .NOTES
         Author: Trent Willingham
         Check out my other scripts and projects @ https://github.com/twillin912

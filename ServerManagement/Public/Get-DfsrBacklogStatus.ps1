@@ -18,7 +18,7 @@ function Get-DfsrBacklogStatus {
         Retrieves the replicated folder 'Folder01' and its inbound backlog from each partner.
 
     .LINK
-        http://servermanagementtools.readthedocs.io/en/stable/functions/Get-DfsrBacklogStatus
+        http://psservermanagement.readthedocs.io/en/latest/functions/Get-DfsrBacklogStatus
 
     .NOTES
         Author: Trent Willingham
