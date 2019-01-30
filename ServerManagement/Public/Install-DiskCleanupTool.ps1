@@ -42,7 +42,7 @@ function Install-DiskCleanupTool {
         }
 
         if ($Credential) {
-            $SessionParams.Credential = $Credential
+            $CimParams.Credential = $Credential
         }
 
         $CreateLink = {
@@ -58,7 +58,7 @@ function Install-DiskCleanupTool {
 
         $RemoteCopy = {
             param ($Source, $Target)
-            Copy-Item -Path $Source -Destination $Target -Force
+            Copy-Item $Source $Target -Force
         }
 
     }
@@ -66,7 +66,7 @@ function Install-DiskCleanupTool {
     process {
         foreach ($Computer in $ComputerName) {
             $Supported = $true
-            $SessionParams.ComputerName = $Computer
+            $CimParams.ComputerName = $Computer
             try {
                 $CimSession = NewFallbackCimSession @SessionParams
                 $OperatingSystem = Get-CimInstance -CimSession $CimSession @InstanceParams
