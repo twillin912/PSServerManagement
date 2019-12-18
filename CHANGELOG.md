@@ -1,5 +1,11 @@
 # ServerManagement Release History
 
+## v0.6 (2019-12-18)
+
+- `Invoke-LogRotation`: Added feature to remove old archive files
+- `Register-LogRotationTask`: Added feature to remove old archive files
+
+
 ## v0.5 (2018-04-24)
 
 - New Functions
@@ -9,8 +15,8 @@
 
 - Updates
 
-  - Invoke-LogRotation: Refactored the parameter name 'CompressDays' to 'KeepRaw'
-  - Register-LogRotationTask: Refactored the parameter name 'CompressDays' to 'KeepRaw'
+  - `Invoke-LogRotation`: Refactored the parameter name 'CompressDays' to 'KeepRaw'
+  - `Register-LogRotationTask`: Refactored the parameter name 'CompressDays' to 'KeepRaw'
 
 
 ## v0.4 (2017-04-05)

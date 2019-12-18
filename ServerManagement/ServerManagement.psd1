@@ -12,7 +12,7 @@
 RootModule = 'ServerManagement.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.5.10'
+ModuleVersion = '0.6.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -27,7 +27,7 @@ Author = 'Trent Willingham'
 CompanyName = 'Unknown'
 
 # Copyright statement for this module
-Copyright = '(c) 2017 Trent Willingham. All rights reserved.'
+Copyright = '(c) 2019 Trent Willingham. All rights reserved.'
 
 # Description of the functionality provided by this module
 Description = 'Collection of PowerShell functions for managing Windows Server.'
@@ -133,4 +133,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-
