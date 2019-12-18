@@ -1219,6 +1219,18 @@ Installs the Disk Cleanup utility on the system named 'Server01'.</dev:code>
           <dev:defaultValue>5</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>KeepArchives</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the number of months to keep compresses log archives.  If you do not specify this parameter, the archives will be retained indefinately.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+          <dev:type>
+            <maml:name>Int32</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>0</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Include</maml:name>
           <maml:Description>
             <maml:para>Specifies a wildcard selection string of files to include.</maml:para>
@@ -1290,6 +1302,18 @@ Installs the Disk Cleanup utility on the system named 'Server01'.</dev:code>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>5</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>KeepArchives</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the number of months to keep compresses log archives.  If you do not specify this parameter, the archives will be retained indefinately.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+        <dev:type>
+          <maml:name>Int32</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>0</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Include</maml:name>
@@ -1424,6 +1448,18 @@ Archives the log files for the IIS 'Default Website' using the specified 10 day 
           <dev:defaultValue>0</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>KeepArchives</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the number of months to keep compresses log archives.  If you do not specify this parameter, the archives will be retained indefinately.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+          <dev:type>
+            <maml:name>Int32</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>0</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>StartTime</maml:name>
           <maml:Description>
             <maml:para>Specifies the start time for the scheduled task.  The default value is 10:00 PM.</maml:para>
@@ -1490,6 +1526,18 @@ Archives the log files for the IIS 'Default Website' using the specified 10 day 
         <maml:name>KeepRaw</maml:name>
         <maml:Description>
           <maml:para>Specifies the number of days to keep uncompressed log files.  If you do not specify this parameter, the cmdlet will retain 5 days.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+        <dev:type>
+          <maml:name>Int32</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>0</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>KeepArchives</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the number of months to keep compresses log archives.  If you do not specify this parameter, the archives will be retained indefinately.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
         <dev:type>

@@ -27,6 +27,10 @@ function Invoke-LogRotation {
         [Alias('CompressDays')]
         [int] $KeepRaw = 5,
 
+        # Specifies the number of months to keep compresses log archives.  If you do not specify this parameter, the archives will be retained indefinately.
+        [Parameter()]
+        [int] $KeepArchives,
+
         # Specifies a wildcard selection string of files to include.
         [Parameter()]
         [string]$Include = '*.log',
@@ -45,6 +49,10 @@ function Invoke-LogRotation {
             $CompressBefore = (Get-Date -Date $CurrentDate).AddDays( - $KeepRaw)
         }
 
+        if ($KeepArchives) {
+            $DeleteBefore = (Get-Date -Date $CurrentDate).AddMonths( - $KeepArchives)
+        }
+
         $AdditionalParams = @{ 'Include' = $Include }
         if ($Exclude) { $AdditionalParams.Add('Exclude', $Exclude) }
 
@@ -61,12 +69,12 @@ function Invoke-LogRotation {
 
             $LogFolder = Split-Path -Path $($LogPath) -Leaf
 
-            if ($KeepRaw) {
+            if ($KeepRaw -and $KeepRaw -gt 0) {
                 $LogsToCompress = Get-ChildItem -Path $LogPath @AdditionalParams -Recurse |
-                    Where-Object { $PSItem.PSIsContainer -eq $false -and $PSItem.LastWriteTime -lt $CompressBefore }
+                Where-Object { $PSItem.PSIsContainer -eq $false -and $PSItem.LastWriteTime -lt $CompressBefore }
                 Write-Verbose -Message "Compressing $($LogsToCompress.Count) older than $($CompressBefore.ToString($DateDisplayFormat))"
 
-                $LogHashTable = @{}
+                $LogHashTable = @{ }
                 foreach ($File in $LogsToCompress) {
                     $LogHashTable.Add($File.FullName, $File.LastWriteTime.ToString($DateFileFormat))
                 }
@@ -114,6 +122,16 @@ function Invoke-LogRotation {
                             }
                         }
                         [System.GC]::Collect()
+                    }
+                }
+            }
+
+            if ($KeepArchives -and $KeepArchives -gt 0) {
+                $LogArchives = Get-ChildItem -Path $LogPath -Filter "$($env:ComputerName)-$($LogFolder)-*.zip"
+                $ArchivesToDelete = $LogArchives | Where-Object { $_.LastWriteTime -lt $DeleteBefore }
+                foreach ($Archive in $ArchivesToDelete) {
+                    if ($PSCmdlet.ShouldProcess($Archive.Name, 'Delete Archive')){
+                        Remove-Item -Path $Archive.FullName
                     }
                 }
             }
