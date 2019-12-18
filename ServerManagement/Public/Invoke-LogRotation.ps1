@@ -19,11 +19,11 @@ function Invoke-LogRotation {
     [CmdletBinding(SupportsShouldProcess = $true)]
     param(
         # Specifies a path to one or more locations.  Invoke-LogRotation processes the log files in the specified locations.
-        [Parameter(Mandatory = $true, Position = 1)]
+        [Parameter(Mandatory = $true, Position = 0)]
         [string[]]$Path,
 
         # Specifies the number of days to keep uncompressed log files.  If you do not specify this parameter, the cmdlet will retain 5 days.
-        [Parameter(Position = 2)]
+        [Parameter(Position = 1)]
         [Alias('CompressDays')]
         [int] $KeepRaw = 5,
 
