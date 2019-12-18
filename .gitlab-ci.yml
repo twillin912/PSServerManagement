@@ -1,0 +1,20 @@
+stages:
+  - test
+  - deploy
+
+variables:
+    GIT_SSL_NO_VERIFY: "true"
+
+test_job:
+  stage: test
+  except:
+    - master
+  script:
+    - .\build.ps1 -Tasks 'analyze','test'
+
+deploy_job:
+  stage: deploy
+  only:
+    - master
+  script:
+    - .\build.ps1 -Tasks 'analyze','test','deploy'
