@@ -24,16 +24,14 @@ Copies the Disk Cleanup utility and supporting files from the WinSxS folder on t
 ### EXAMPLE 1
 ```
 Install-DiskCleanupTools
-```
-
 Installs the Disk Cleanup utility on the local system.
+```
 
 ### EXAMPLE 2
 ```
 Install-DiskCleanupTools -ComputerName Server01
-```
-
 Installs the Disk Cleanup utility on the system named 'Server01'.
+```
 
 ## PARAMETERS
 
@@ -54,7 +52,7 @@ Accept wildcard characters: False
 ```
 
 ### -Credential
-{{Fill Credential Description}}
+{{ Fill Credential Description }}
 
 ```yaml
 Type: PSCredential
@@ -69,16 +67,14 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### ComputerName as String or Array of strings
-
 ## OUTPUTS
 
 ### None
-
 ## NOTES
 Author: Trent Willingham
 Check out my other projects on GitHub https://github.com/twillin912

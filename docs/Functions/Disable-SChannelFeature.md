@@ -26,9 +26,8 @@ This cmdlet can be used to disable ciphers, key exchanges, and protocols that ar
 ### EXAMPLE 1
 ```
 Disable-SChannelFeature -ComputerName 'MyServer' -Rc4
-```
-
 Disable the RC4 cipher on the computer 'MyServer'.
+```
 
 ## PARAMETERS
 
@@ -169,16 +168,14 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
-
 ## OUTPUTS
 
 ### None
-
 ## NOTES
 Author: Trent Willingham
 Check out my other projects on GitHub https://github.com/twillin912
