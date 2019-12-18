@@ -13,8 +13,8 @@ Short description
 ## SYNTAX
 
 ```
-Register-LogRotationTask [-Name] <String> [-Path] <String[]> [[-KeepRaw] <Int32>] [-StartTime <String>]
- [-Include <String>] [-Exclude <String>] [<CommonParameters>]
+Register-LogRotationTask [-Name] <String> [-Path] <String[]> [[-KeepRaw] <Int32>] [-KeepArchives <Int32>]
+ [-StartTime <String>] [-Include <String>] [-Exclude <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,6 +71,22 @@ Aliases: CompressDays
 
 Required: False
 Position: 4
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeepArchives
+Specifies the number of months to keep compresses log archives. 
+If you do not specify this parameter, the archives will be retained indefinately.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False

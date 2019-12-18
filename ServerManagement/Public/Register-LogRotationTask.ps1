@@ -27,6 +27,10 @@ function Register-LogRotationTask {
         [Alias('CompressDays')]
         [int] $KeepRaw,
 
+        # Specifies the number of months to keep compresses log archives.  If you do not specify this parameter, the archives will be retained indefinately.
+        [Parameter()]
+        [int] $KeepArchives,
+
         # Specifies the start time for the scheduled task.  The default value is 10:00 PM.
         [Parameter()]
         [string] $StartTime = '22:00',
@@ -43,6 +47,9 @@ function Register-LogRotationTask {
     $Command = "Invoke-LogRotation -Path '$Path'"
     if ($KeepRaw) {
         $Command += " -KeepRaw $KeepRaw"
+    }
+    if ($KeepArchives) {
+        $Command += " -KeepArchvies $KeepArchives"
     }
     if ($Include) {
         $Command += " -Include '$Include'"
