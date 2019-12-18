@@ -29,16 +29,14 @@ A backlog indicates latency, and a backlog may be expected in your environment, 
 ### EXAMPLE 1
 ```
 Get-DfsrBacklogStatus -ComputerName 'MyServer'
-```
-
 Retrieves all configured replicated folders and their inbound backlog from each partner.
+```
 
 ### EXAMPLE 2
 ```
 Get-DfsrBacklogStatus -ComputerName 'MyServer' -FolderName 'Folder01'
-```
-
 Retrieves the replicated folder 'Folder01' and its inbound backlog from each partner.
+```
 
 ## PARAMETERS
 
@@ -76,7 +74,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

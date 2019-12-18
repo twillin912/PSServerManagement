@@ -255,9 +255,10 @@
     <command:examples>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
-        <dev:code>Disable-SChannelFeature -ComputerName 'MyServer' -Rc4</dev:code>
+        <dev:code>Disable-SChannelFeature -ComputerName 'MyServer' -Rc4
+Disable the RC4 cipher on the computer 'MyServer'.</dev:code>
         <dev:remarks>
-          <maml:para>Disable the RC4 cipher on the computer 'MyServer'.</maml:para>
+          <maml:para></maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -621,16 +622,18 @@
     <command:examples>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
-        <dev:code>Get-DfsrBacklogStatus -ComputerName 'MyServer'</dev:code>
+        <dev:code>Get-DfsrBacklogStatus -ComputerName 'MyServer'
+Retrieves all configured replicated folders and their inbound backlog from each partner.</dev:code>
         <dev:remarks>
-          <maml:para>Retrieves all configured replicated folders and their inbound backlog from each partner.</maml:para>
+          <maml:para></maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
-        <dev:code>Get-DfsrBacklogStatus -ComputerName 'MyServer' -FolderName 'Folder01'</dev:code>
+        <dev:code>Get-DfsrBacklogStatus -ComputerName 'MyServer' -FolderName 'Folder01'
+Retrieves the replicated folder 'Folder01' and its inbound backlog from each partner.</dev:code>
         <dev:remarks>
-          <maml:para>Retrieves the replicated folder 'Folder01' and its inbound backlog from each partner.</maml:para>
+          <maml:para></maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -703,30 +706,34 @@
     <command:examples>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
-        <dev:code>Get-IISLogPath</dev:code>
+        <dev:code>Get-IISLogPath
+Returns log path information for all sites</dev:code>
         <dev:remarks>
-          <maml:para>Returns log path information for all sites</maml:para>
+          <maml:para></maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
-        <dev:code>Get-IISLogPath -Name 'Default Web Site'</dev:code>
+        <dev:code>Get-IISLogPath -Name 'Default Web Site'
+Returns log path information for the 'Default Web Site'</dev:code>
         <dev:remarks>
-          <maml:para>Returns log path information for the 'Default Web Site'</maml:para>
+          <maml:para></maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 3 --------------------------</maml:title>
-        <dev:code>Get-IISLogPath -Name 'Admin*'</dev:code>
+        <dev:code>Get-IISLogPath -Name 'Admin*'
+Returns log path information for all sites whose Name begin with 'Admin'</dev:code>
         <dev:remarks>
-          <maml:para>Returns log path information for all sites whose Name begin with 'Admin'</maml:para>
+          <maml:para></maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 4 --------------------------</maml:title>
-        <dev:code>Get-IISLogPath -Name @('MySite1','MySite2')</dev:code>
+        <dev:code>Get-IISLogPath -Name @('MySite1','MySite2')
+Returns log path information for the sites 'MySite1' and 'MySite2'</dev:code>
         <dev:remarks>
-          <maml:para>Returns log path information for the sites 'MySite1' and 'MySite2'</maml:para>
+          <maml:para></maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -923,7 +930,7 @@
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="ConnectionState">
           <maml:name>State</maml:name>
           <maml:Description>
-            <maml:para>{{Fill State Description}}</maml:para>
+            <maml:para>{{ Fill State Description }}</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -935,7 +942,7 @@
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
           <maml:name>ClientName</maml:name>
           <maml:Description>
-            <maml:para>{{Fill ClientName Description}}</maml:para>
+            <maml:para>{{ Fill ClientName Description }}</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -947,7 +954,7 @@
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
           <maml:name>UserName</maml:name>
           <maml:Description>
-            <maml:para>{{Fill UserName Description}}</maml:para>
+            <maml:para>{{ Fill UserName Description }}</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -974,7 +981,7 @@
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="ConnectionState">
         <maml:name>State</maml:name>
         <maml:Description>
-          <maml:para>{{Fill State Description}}</maml:para>
+          <maml:para>{{ Fill State Description }}</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -986,7 +993,7 @@
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
         <maml:name>ClientName</maml:name>
         <maml:Description>
-          <maml:para>{{Fill ClientName Description}}</maml:para>
+          <maml:para>{{ Fill ClientName Description }}</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -998,7 +1005,7 @@
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
         <maml:name>UserName</maml:name>
         <maml:Description>
-          <maml:para>{{Fill UserName Description}}</maml:para>
+          <maml:para>{{ Fill UserName Description }}</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -1085,7 +1092,7 @@
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
           <maml:name>Credential</maml:name>
           <maml:Description>
-            <maml:para>{{Fill Credential Description}}</maml:para>
+            <maml:para>{{ Fill Credential Description }}</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
           <dev:type>
@@ -1112,7 +1119,7 @@
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
         <maml:name>Credential</maml:name>
         <maml:Description>
-          <maml:para>{{Fill Credential Description}}</maml:para>
+          <maml:para>{{ Fill Credential Description }}</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
         <dev:type>
@@ -1150,16 +1157,18 @@
     <command:examples>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
-        <dev:code>Install-DiskCleanupTools</dev:code>
+        <dev:code>Install-DiskCleanupTools
+Installs the Disk Cleanup utility on the local system.</dev:code>
         <dev:remarks>
-          <maml:para>Installs the Disk Cleanup utility on the local system.</maml:para>
+          <maml:para></maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
-        <dev:code>Install-DiskCleanupTools -ComputerName Server01</dev:code>
+        <dev:code>Install-DiskCleanupTools -ComputerName Server01
+Installs the Disk Cleanup utility on the system named 'Server01'.</dev:code>
         <dev:remarks>
-          <maml:para>Installs the Disk Cleanup utility on the system named 'Server01'.</maml:para>
+          <maml:para></maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -1185,7 +1194,7 @@
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Invoke-LogRotation</maml:name>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>Path</maml:name>
           <maml:Description>
             <maml:para>Specifies a path to one or more locations.  Invoke-LogRotation processes the log files in the specified locations.</maml:para>
@@ -1197,7 +1206,7 @@
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="CompressDays">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="CompressDays">
           <maml:name>KeepRaw</maml:name>
           <maml:Description>
             <maml:para>Specifies the number of days to keep uncompressed log files.  If you do not specify this parameter, the cmdlet will retain 5 days.</maml:para>
@@ -1258,7 +1267,7 @@
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
         <maml:name>Path</maml:name>
         <maml:Description>
           <maml:para>Specifies a path to one or more locations.  Invoke-LogRotation processes the log files in the specified locations.</maml:para>
@@ -1270,7 +1279,7 @@
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="CompressDays">
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="CompressDays">
         <maml:name>KeepRaw</maml:name>
         <maml:Description>
           <maml:para>Specifies the number of days to keep uncompressed log files.  If you do not specify this parameter, the cmdlet will retain 5 days.</maml:para>
@@ -1341,16 +1350,18 @@
     <command:examples>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
-        <dev:code>Invoke-LogRotation -Path C:\Inetpub\Logs\LogFiles\W3SVC1</dev:code>
+        <dev:code>Invoke-LogRotation -Path C:\Inetpub\Logs\LogFiles\W3SVC1
+Archives the log files for the IIS 'Default Website' using the default 5 day retention</dev:code>
         <dev:remarks>
-          <maml:para>Archives the log files for the IIS 'Default Website' using the default 5 day retention</maml:para>
+          <maml:para></maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
-        <dev:code>Invoke-LogRotation -Path C:\Inetpub\Logs\LogFiles\W3SVC1 -KeepRaw 10</dev:code>
+        <dev:code>Invoke-LogRotation -Path C:\Inetpub\Logs\LogFiles\W3SVC1 -KeepRaw 10
+Archives the log files for the IIS 'Default Website' using the specified 10 day retention</dev:code>
         <dev:remarks>
-          <maml:para>Archives the log files for the IIS 'Default Website' using the specified 10 day retention</maml:para>
+          <maml:para></maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>

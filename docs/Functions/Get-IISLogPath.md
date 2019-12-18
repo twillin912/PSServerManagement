@@ -24,30 +24,26 @@ The Get-IISLogPath cmdlet retrieves the log file path for one or more websites c
 ### EXAMPLE 1
 ```
 Get-IISLogPath
-```
-
 Returns log path information for all sites
+```
 
 ### EXAMPLE 2
 ```
 Get-IISLogPath -Name 'Default Web Site'
-```
-
 Returns log path information for the 'Default Web Site'
+```
 
 ### EXAMPLE 3
 ```
 Get-IISLogPath -Name 'Admin*'
-```
-
 Returns log path information for all sites whose Name begin with 'Admin'
+```
 
 ### EXAMPLE 4
 ```
 Get-IISLogPath -Name @('MySite1','MySite2')
-```
-
 Returns log path information for the sites 'MySite1' and 'MySite2'
+```
 
 ## PARAMETERS
 
@@ -69,7 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -26,16 +26,14 @@ Once the contents of the archive are verified the original log files are deleted
 ### EXAMPLE 1
 ```
 Invoke-LogRotation -Path C:\Inetpub\Logs\LogFiles\W3SVC1
-```
-
 Archives the log files for the IIS 'Default Website' using the default 5 day retention
+```
 
 ### EXAMPLE 2
 ```
 Invoke-LogRotation -Path C:\Inetpub\Logs\LogFiles\W3SVC1 -KeepRaw 10
-```
-
 Archives the log files for the IIS 'Default Website' using the specified 10 day retention
+```
 
 ## PARAMETERS
 
@@ -49,7 +47,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -65,7 +63,7 @@ Parameter Sets: (All)
 Aliases: CompressDays
 
 Required: False
-Position: 3
+Position: 2
 Default value: 5
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -133,7 +131,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
