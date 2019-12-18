@@ -12,7 +12,7 @@ function Get-RDSession {
     .EXAMPLE
     .NOTES
     .LINK
-        http://servermanagementtools.readthedocs.io/en/stable/functions/Get-RDSession
+        http://psservermanagement.readthedocs.io/en/latest/functions/Get-RDSession
     .LINK
         http://code.msdn.microsoft.com/PSTerminalServices
     .LINK

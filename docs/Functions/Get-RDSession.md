@@ -1,7 +1,7 @@
 ---
 external help file: ServerManagement-help.xml
 Module Name: ServerManagement
-online version: http://servermanagementtools.readthedocs.io/en/stable/functions/Get-RDSession
+online version: http://psservermanagement.readthedocs.io/en/latest/functions/Get-RDSession
 schema: 2.0.0
 ---
 
@@ -107,7 +107,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[http://servermanagementtools.readthedocs.io/en/stable/functions/Get-RDSession](http://servermanagementtools.readthedocs.io/en/stable/functions/Get-RDSession)
+[http://psservermanagement.readthedocs.io/en/latest/functions/Get-RDSession](http://psservermanagement.readthedocs.io/en/latest/functions/Get-RDSession)
 
 [http://code.msdn.microsoft.com/PSTerminalServices](http://code.msdn.microsoft.com/PSTerminalServices)
 

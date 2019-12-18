@@ -73,7 +73,7 @@ function Get-LinuxCdpInfo {
                         'SwitchAddress' = $SwitchAdress
                         'SwitchName'    = $SwitchName
                     }
-                    $Output.PSObject.TypeNames.Insert(0, 'ServerManagementTools.CdpInfo')
+                    $Output.PSObject.TypeNames.Insert(0, 'ServerManagement.CdpInfo')
                     Write-Output -InputObject $Output
                 }
             }

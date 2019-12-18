@@ -5,7 +5,7 @@
 If you have PowerShell 5+, or have the PowerShellGet module, simply use the `Install-Module` command.
 
 ```powershell
-PS> Install-Module -Name ServerManagementTools
+PS> Install-Module -Name ServerManagement
 ```
 
 ## Getting Started
@@ -13,7 +13,5 @@ PS> Install-Module -Name ServerManagementTools
 Get a list of available commands
 
 ```powershell
-PS> Get-Command -Module ServerManagementTools
+PS> Get-Command -Module ServerManagement
 ```
-
-[![Source](images/QuickStart-GetCommand.png)](images/QuickStart-GetCommand.png)

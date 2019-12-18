@@ -1,7 +1,7 @@
 ---
 external help file: ServerManagement-help.xml
 Module Name: ServerManagement
-online version: http://servermanagementtools.readthedocs.io/en/stable/functions/Get-IISLogPath
+online version: http://psservermanagement.readthedocs.io/en/latest/functions/Get-IISLogPath
 schema: 2.0.0
 ---
 

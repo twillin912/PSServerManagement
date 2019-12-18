@@ -51,7 +51,7 @@ function Get-ComputerDetail {
                 'OperatingSystem' = $OS.Caption
                 'InstallDate'     = [datetime]$OS.InstallDate
             }
-            $OutputObject.PSObject.TypeNames.Insert(0, 'ServerManagementTools.ComputerDetail')
+            $OutputObject.PSObject.TypeNames.Insert(0, 'ServerManagement.ComputerDetail')
             Write-Output -InputObject $OutputObject
         }
     }
